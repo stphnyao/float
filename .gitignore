@@ -1,0 +1,15 @@
+# Environment secrets
+.env
+**/.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Node / Yarn / pnpm caches
+node_modules/
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
