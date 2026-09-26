@@ -1,0 +1,54 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T21:09:52.005Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "reset",
+    "mode": "confirmed testnet transaction",
+    "keyLabel": "B",
+    "shortPeriodConfiguredSeconds": 60,
+    "shortPeriodLabel": "ACTUAL PERIOD USED: 60 seconds (accelerated demo period). A 60s reset is NOT evidence of a full 24-hour rollover.",
+    "limitStart": {
+      "remaining": "20000000",
+      "periodEnd": "1790456981"
+    },
+    "firstTransfer": {
+      "txHash": "0x9df55f772f021d52cd323fe85d9bd7ba822ae3691ff48a385d9b470499b73680",
+      "explorer": "https://explore.testnet.tempo.xyz/tx/0x9df55f772f021d52cd323fe85d9bd7ba822ae3691ff48a385d9b470499b73680",
+      "status": "success"
+    },
+    "limitAfterFirst": {
+      "remaining": "8000000",
+      "periodEnd": "1790456981"
+    },
+    "onChainPeriodEndSec": 1790456981,
+    "waitedUntilSec": 1790456991,
+    "observedResetAtLeastAtSec": 1790456991,
+    "limitAfterWait": {
+      "remaining": "20000000",
+      "periodEnd": "1790457041"
+    },
+    "secondTransfer": {
+      "txHash": "0x4c47ff83eff564ed5cf11d779f54b7e9e76775d9bb8dde17b7e9d91ff6530340",
+      "explorer": "https://explore.testnet.tempo.xyz/tx/0x4c47ff83eff564ed5cf11d779f54b7e9e76775d9bb8dde17b7e9d91ff6530340",
+      "status": "success"
+    },
+    "limitAfterSecond": {
+      "remaining": "8000000",
+      "periodEnd": "1790457041"
+    },
+    "balancesBefore": {
+      "merchant:AlphaUSD": "999964999438",
+      "treasury:AlphaUSD": "1000035000002"
+    },
+    "balancesAfter": {
+      "merchant:AlphaUSD": "999940999438",
+      "treasury:AlphaUSD": "1000059000002"
+    },
+    "dailyConfigVerification": {
+      "keyLabel": "A",
+      "periodSecondsConfigured": 86400,
+      "note": "Key A (ceiling step) was authorized with period=86400s; its on-chain remaining/periodEnd reads in 04-ceiling.json demonstrate the 86400s configuration was accepted by the chain. A full 24h rollover was NOT observed (would take 24h)."
+    }
+  }
+]

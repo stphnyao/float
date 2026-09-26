@@ -1,0 +1,73 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T20:52:55.471Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "fund",
+    "mode": "confirmed testnet transaction",
+    "faucetUrl": "https://tempo.xyz/developers/api/faucet",
+    "faucetAuth": "none (public POST; no Discord/GitHub login)",
+    "merchantAddress": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+    "treasuryAddress": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+    "beforeBalancesBaseUnits": {
+      "merchant:pathUSD": "0",
+      "merchant:AlphaUSD": "0",
+      "treasury:pathUSD": "0",
+      "treasury:AlphaUSD": "0"
+    },
+    "afterBalancesBaseUnits": {
+      "merchant:pathUSD": "1000000000000",
+      "merchant:AlphaUSD": "1000000000000",
+      "treasury:pathUSD": "1000000000000",
+      "treasury:AlphaUSD": "1000000000000"
+    },
+    "mintTxHashes": [
+      {
+        "to": "merchant",
+        "hash": "0x3eccfd09cf676608db4c7d2de1d6777fb1bb53b63e786db6fc063b07b9abc637",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x3eccfd09cf676608db4c7d2de1d6777fb1bb53b63e786db6fc063b07b9abc637"
+      },
+      {
+        "to": "merchant",
+        "hash": "0x9231e78ebfe378e9d016dbc3db10ea2434a4663d7c694028f8932eadb211dd1e",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x9231e78ebfe378e9d016dbc3db10ea2434a4663d7c694028f8932eadb211dd1e"
+      },
+      {
+        "to": "merchant",
+        "hash": "0x68865c5cf607058aa749a324fd2f54b157504b4d311c07649e8a7b3b2902f37a",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x68865c5cf607058aa749a324fd2f54b157504b4d311c07649e8a7b3b2902f37a"
+      },
+      {
+        "to": "merchant",
+        "hash": "0xfa6403afa7a5186f6938a2e0939372b776167b7a1505f329482f7414a5bc3863",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0xfa6403afa7a5186f6938a2e0939372b776167b7a1505f329482f7414a5bc3863"
+      },
+      {
+        "to": "treasury",
+        "hash": "0x390caa76699d93b1bd9a57964187abf022386a82bab3346bc1503c3aaf51278b",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x390caa76699d93b1bd9a57964187abf022386a82bab3346bc1503c3aaf51278b"
+      },
+      {
+        "to": "treasury",
+        "hash": "0x0a11c6d7f645acbf7c981b7a6a7f2c75348980ee776295b2b1d954a3e02ee116",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x0a11c6d7f645acbf7c981b7a6a7f2c75348980ee776295b2b1d954a3e02ee116"
+      },
+      {
+        "to": "treasury",
+        "hash": "0x9db22dd8e77c76e6f1009b2eb2c69e5bf7fcf14d7b40bab90925d3970e437251",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x9db22dd8e77c76e6f1009b2eb2c69e5bf7fcf14d7b40bab90925d3970e437251"
+      },
+      {
+        "to": "treasury",
+        "hash": "0xf89d825e4ca5c0e26fc44625a774b8cea24522ffb12417e4d8451648da8b550d",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0xf89d825e4ca5c0e26fc44625a774b8cea24522ffb12417e4d8451648da8b550d"
+      }
+    ],
+    "primaryToken": {
+      "label": "AlphaUSD",
+      "address": "0x20c0000000000000000000000000000000000001"
+    },
+    "feeTokenDefault": "0x20c0000000000000000000000000000000000000",
+    "notes": "Faucet mints 1M of each of pathUSD/AlphaUSD/BetaUSD/ThetaUSD per request. Receipts awaited for each mint."
+  }
+]

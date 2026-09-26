@@ -1,0 +1,39 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T21:10:11.884Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "fees",
+    "mode": "confirmed testnet transaction",
+    "transferTxHash": "0x1a962593b1254762675b6ef29098c11a2ff780fb06dbe3876e7e0ea6feff91e9",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x1a962593b1254762675b6ef29098c11a2ff780fb06dbe3876e7e0ea6feff91e9",
+    "receiptStatus": "success",
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeTokenUsed": "0x20c0000000000000000000000000000000000000",
+    "feeTokenIsDefaultQuoteToken": true,
+    "gasUsed": "39918",
+    "effectiveGasPrice": "10225000000",
+    "type": "0x76",
+    "balancesBefore": {
+      "merchant:pathUSD": "999999554158",
+      "merchant:AlphaUSD": "999940999438",
+      "treasury:pathUSD": "1000000000000",
+      "treasury:AlphaUSD": "1000059000002"
+    },
+    "balancesAfter": {
+      "merchant:pathUSD": "999999553749",
+      "merchant:AlphaUSD": "999940999437",
+      "treasury:pathUSD": "1000000000000",
+      "treasury:AlphaUSD": "1000059000003"
+    },
+    "feeEffectNotes": [
+      "Tempo has no native gas token: fees are paid in a TIP-20 fee token set per transaction/client (client default here: pathUSD 0x20c0...0000).",
+      "feePayer on the receipt identifies who paid; by default the sender (merchant root) pays its own fees.",
+      "Access-key limit accounting: limits are per-token on transfer amounts; the ceiling step brackets remaining-limit reads around transfers to show fee effects (if any) on the limit.",
+      "Funding documented: merchant root needs fee-token (pathUSD) balance + the collection token (AlphaUSD); access keys sign but the ROOT account is the fee payer by default."
+    ],
+    "allFundingSources": [
+      "Programmatic faucet (no auth): https://tempo.xyz/developers/api/faucet — mints 1M of each pathUSD/AlphaUSD/BetaUSD/ThetaUSD per request to a lowercase address."
+    ]
+  }
+]

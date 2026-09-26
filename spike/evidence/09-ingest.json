@@ -1,0 +1,168 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T21:21:49.831Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "ingest (adapter path)",
+    "mode": "observed testnet reads over confirmed testnet transactions",
+    "adapterImplementation": "live (packages/chain createTempoAdapter, viem 2.56.9)",
+    "verifyNetwork": {
+      "chainId": 42431
+    },
+    "tokenInfo": {
+      "address": "0x20c0000000000000000000000000000000000001",
+      "symbol": "alphaUSD",
+      "decimals": 6,
+      "name": "AlphaUSD"
+    },
+    "merchantBalanceBaseUnits": "999940999437",
+    "treasuryBalanceBaseUnits": "1000059000003",
+    "scannedRange": {
+      "startBlock": 37010843,
+      "endBlockInclusive": 37015842
+    },
+    "eventCount": 0,
+    "events": [],
+    "replayEventCount": 0,
+    "duplicateEventsAcrossCursorBoundary": 0,
+    "notes": "Confirmed TIP-20 Transfer logs re-read via the adapter with recipient filter (treasury only) and gap-free cursor advance. The underlying transfers were submitted in steps 04/07/08 (delegated access-key transfers and root transfer)."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T21:22:32.045Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "ingest (adapter path)",
+    "mode": "observed testnet reads over confirmed testnet transactions",
+    "adapterImplementation": "live (packages/chain createTempoAdapter, viem 2.56.9)",
+    "verifyNetwork": {
+      "chainId": 42431
+    },
+    "tokenInfo": {
+      "address": "0x20c0000000000000000000000000000000000001",
+      "symbol": "alphaUSD",
+      "decimals": 6,
+      "name": "AlphaUSD"
+    },
+    "merchantBalanceBaseUnits": "999940999437",
+    "treasuryBalanceBaseUnits": "1000059000003",
+    "scannedRange": {
+      "startBlock": 37010909,
+      "endBlockInclusive": 37040914,
+      "pages": 7
+    },
+    "eventCount": 9,
+    "events": [
+      {
+        "chainId": 42431,
+        "txHash": "0x0a11c6d7f645acbf7c981b7a6a7f2c75348980ee776295b2b1d954a3e02ee116",
+        "logIndex": 3,
+        "blockNumber": 37037943,
+        "blockHash": "0x8ce9de0838463240c08f17f68572dd833dbfe3aa91d4798950a53d1a49c82c98",
+        "timestampSec": 1790455969,
+        "from": "0x0000000000000000000000000000000000000000",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "1000000000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0xf02a1cbfa34f67cc5839b525e5d23f2de65157a789bfe3ff5736df79cab20391",
+        "logIndex": 30,
+        "blockNumber": 37038373,
+        "blockHash": "0x239d6cb1671345f57b943e57365614a845dcce4c42075c8724d1831ac3be8840",
+        "timestampSec": 1790456226,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "1"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0x6a8476edcb89e4510c023352d743a2ff0ec8614bb71a6adb9423f93af994dda6",
+        "logIndex": 7,
+        "blockNumber": 37038374,
+        "blockHash": "0xd7854e93d18dce87c1894ec9919831c6f318eb29f22bd2989d21617decc3d757",
+        "timestampSec": 1790456227,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "1"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0xda6d19ce83628ef9162a1b71370acb7b6db307df25b56b05e6e8c33891d39ee8",
+        "logIndex": 2,
+        "blockNumber": 37038753,
+        "blockHash": "0xd124cfc2726f61dc96833432273db93d3118d44a7c44eaee3bf32e7f42654ef9",
+        "timestampSec": 1790456454,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "15000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0xd57832f27725d8e6be346e5c1e46a358b96e727c1cad9998a599dece5a975d9e",
+        "logIndex": 5,
+        "blockNumber": 37039158,
+        "blockHash": "0xb0122c605c67c92bb52b3cf54b6658e8629fbeb652b0197ef46152eac1a60c1d",
+        "timestampSec": 1790456696,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "15000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0x2ee0dbfaad70728f958b54d04609d20d0a34427a3c4bc40b3870fdd58a8a952d",
+        "logIndex": 2,
+        "blockNumber": 37039161,
+        "blockHash": "0x1a1b0e23013b760baaa1e2b31e025823fea1b4dafb13da4ef4f09e2fc9f17eab",
+        "timestampSec": 1790456698,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "5000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0x9df55f772f021d52cd323fe85d9bd7ba822ae3691ff48a385d9b470499b73680",
+        "logIndex": 14,
+        "blockNumber": 37039557,
+        "blockHash": "0xd7510b1b9e5d0115d8536461b1a39865ee5652b1b94522c59c4e2790cab763c8",
+        "timestampSec": 1790456935,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "12000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0x4c47ff83eff564ed5cf11d779f54b7e9e76775d9bb8dde17b7e9d91ff6530340",
+        "logIndex": 4,
+        "blockNumber": 37039643,
+        "blockHash": "0x25c60cf620abfde607fbf966c105d31eb0cbd67662b0029b46a1fae56eba1ea3",
+        "timestampSec": 1790456987,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "12000000"
+      },
+      {
+        "chainId": 42431,
+        "txHash": "0x1a962593b1254762675b6ef29098c11a2ff780fb06dbe3876e7e0ea6feff91e9",
+        "logIndex": 0,
+        "blockNumber": 37039676,
+        "blockHash": "0x2012f69502470651fcbe04923b923e00bd36c8244b89cd717e10333c9833de51",
+        "timestampSec": 1790457006,
+        "from": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+        "to": "0xc197057273DccE7629ca33488f6F65bC105031F7",
+        "tokenAddress": "0x20c0000000000000000000000000000000000001",
+        "amountBaseUnits": "1"
+      }
+    ],
+    "replayEventCount": 0,
+    "duplicateEventsAcrossCursorBoundary": 0,
+    "notes": "Confirmed TIP-20 Transfer logs re-read via the adapter with recipient filter (treasury only) and gap-free cursor advance. The underlying transfers were submitted in steps 04/07/08 (delegated access-key transfers and root transfer)."
+  }
+]

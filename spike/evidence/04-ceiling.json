@@ -1,0 +1,135 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T21:05:03.851Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "ceiling",
+    "mode": "confirmed testnet transaction",
+    "keyLabel": "A",
+    "ceilingConfigured": {
+      "limitBaseUnits": "20000000",
+      "periodSeconds": 86400
+    },
+    "limitBefore": {
+      "remaining": "20000000",
+      "periodEnd": "1790542840"
+    },
+    "results": {
+      "transfer15": {
+        "txHash": "0xd57832f27725d8e6be346e5c1e46a358b96e727c1cad9998a599dece5a975d9e",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0xd57832f27725d8e6be346e5c1e46a358b96e727c1cad9998a599dece5a975d9e",
+        "status": "success",
+        "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+        "feeToken": "0x20c0000000000000000000000000000000000000",
+        "gasUsed": "70329",
+        "balancesAfter": {
+          "merchant:AlphaUSD": "999969999438",
+          "merchant:pathUSD": "999999556634",
+          "treasury:AlphaUSD": "1000030000002",
+          "treasury:pathUSD": "1000000000000"
+        },
+        "limitAfter": {
+          "remaining": "5000000",
+          "periodEnd": "1790542840"
+        }
+      },
+      "reject6": {
+        "expected": "rejected by period ceiling",
+        "observed": {
+          "kind": "estimation_preflight_rejection_no_receipt",
+          "errorName": "ContractFunctionExecutionError",
+          "message": "The contract function \"transfer\" reverted with the following signature:\n0x8a9e71ea\n\nUnable to decode signature \"0x8a9e71ea\" as it was not found on the provided ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n \nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 6000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9 <- The contract function \"transfer\" reverted with the following signature:\n0x8a9e71ea\n\nUnable to decode signature \"0x8a9e71ea\" as it was not found on the provided ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9 <- Encoded error signature \"0x8a9e71ea\" not found on ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9 <- Execution reverted with reason: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded).\n\nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000000000000000000000000000000001\n  data:  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000",
+          "causes": [
+            {
+              "name": "ContractFunctionExecutionError",
+              "message": "The contract function \"transfer\" reverted with the following signature:\n0x8a9e71ea\n\nUnable to decode signature \"0x8a9e71ea\" as it was not found on the provided ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n \nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 6000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "ContractFunctionRevertedError",
+              "message": "The contract function \"transfer\" reverted with the following signature:\n0x8a9e71ea\n\nUnable to decode signature \"0x8a9e71ea\" as it was not found on the provided ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "AbiErrorSignatureNotFoundError",
+              "message": "Encoded error signature \"0x8a9e71ea\" not found on ABI.\nMake sure you are using the correct ABI and that the error exists on it.\nYou can look up the decoded signature here: https://4byte.sourcify.dev/?q=0x8a9e71ea.\n\nDocs: https://viem.sh/docs/contract/decodeErrorResult\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "TransactionExecutionError",
+              "message": "Execution reverted with reason: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded).\n\nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000000000000000000000000000000001\n  data:  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000005b8d80\n\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "ExecutionRevertedError",
+              "message": "Execution reverted with reason: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded).\n\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "TransactionExecutionError",
+              "message": "Execution reverted with reason: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded).\n\nRequest Arguments:\n  chain:  Tempo Testnet (Moderato) (id: 42431)\n  from:   0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:     0x20c0000000000000000000000000000000000001\n  data:   0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000005b8d80\n\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "ExecutionRevertedError",
+              "message": "Execution reverted with reason: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded).\n\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "RpcRequestError",
+              "message": "RPC Request failed.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_fillTransaction\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"type\":\"0x76\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000005b8d80\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x470f4cdff6f7bf4a63aac5123315ded6d5690508\",\"keyType\":\"p256\"}]}\n\nDetails: execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "(no name)",
+              "message": "execution reverted: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded)"
+            }
+          ],
+          "revertData": "0x8a9e71ea",
+          "decoded": "SpendingLimitExceeded() (TIP-1011)",
+          "receiptStatus": null,
+          "txHash": null
+        },
+        "balancesAfter": {
+          "merchant:AlphaUSD": "999969999438",
+          "merchant:pathUSD": "999999556634",
+          "treasury:AlphaUSD": "1000030000002",
+          "treasury:pathUSD": "1000000000000"
+        },
+        "balancesUnchanged": true,
+        "limitAfter": {
+          "remaining": "5000000",
+          "periodEnd": "1790542840"
+        }
+      },
+      "transfer5": {
+        "txHash": "0x2ee0dbfaad70728f958b54d04609d20d0a34427a3c4bc40b3870fdd58a8a952d",
+        "explorer": "https://explore.testnet.tempo.xyz/tx/0x2ee0dbfaad70728f958b54d04609d20d0a34427a3c4bc40b3870fdd58a8a952d",
+        "status": "success",
+        "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+        "feeToken": "0x20c0000000000000000000000000000000000000",
+        "gasUsed": "70329",
+        "balancesAfter": {
+          "merchant:AlphaUSD": "999964999438",
+          "merchant:pathUSD": "999999555914",
+          "treasury:AlphaUSD": "1000035000002",
+          "treasury:pathUSD": "1000000000000"
+        },
+        "limitAfter": {
+          "remaining": "0",
+          "periodEnd": "1790542840"
+        }
+      }
+    },
+    "balancesBefore": {
+      "merchant:AlphaUSD": "999984999438",
+      "merchant:pathUSD": "999999557354",
+      "treasury:AlphaUSD": "1000015000002",
+      "treasury:pathUSD": "1000000000000"
+    },
+    "balancesFinal": {
+      "merchant:AlphaUSD": "999964999438",
+      "merchant:pathUSD": "999999555914",
+      "treasury:AlphaUSD": "1000035000002",
+      "treasury:pathUSD": "1000000000000"
+    },
+    "feeVsLimitNotes": "Fee token (pathUSD) is separate from the limit token (AlphaUSD). Remaining-limit reads bracket each phase to show whether fees affect the limit.",
+    "knownErrorSelectors": {
+      "0x8a9e71ea": "SpendingLimitExceeded() (TIP-1011)"
+    },
+    "expectedSpendingLimitSelector": "0x8a9e71ea",
+    "noteSelectorDecoding": "TIP-1011 names SpendingLimitExceeded() for overspend; actual selector recorded from any revert data surfaced by the node."
+  }
+]

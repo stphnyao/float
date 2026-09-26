@@ -1,0 +1,31 @@
+{
+  "name": "@float/spike",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "spike": "tsx ts/run.ts",
+    "spike:verify-network": "tsx ts/run.ts verify-network",
+    "spike:authorize": "tsx ts/run.ts authorize",
+    "spike:fund": "tsx ts/run.ts fund",
+    "spike:ceiling": "tsx ts/run.ts ceiling",
+    "spike:scopes": "tsx ts/run.ts scopes",
+    "spike:expiry-revoke": "tsx ts/run.ts expiry-revoke",
+    "spike:reset": "tsx ts/run.ts reset",
+    "spike:fees": "tsx ts/run.ts fees"
+  },
+  "dependencies": {
+    "@float/chain": "workspace:*",
+    "@float/contracts": "workspace:*",
+    "dotenv": "^17.2.3",
+    "viem": "2.56.9"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "tsx": "^4.20.6",
+    "typescript": "^5.9.3",
+    "vitest": "^3.0.0"
+  }
+}

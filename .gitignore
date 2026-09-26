@@ -25,3 +25,6 @@ coverage/
 
 # ZCode session state
 .zcode/
+
+# Spike runtime state (throwaway dev wallets — NEVER commit)
+spike/.state/

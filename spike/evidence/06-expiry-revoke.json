@@ -1,0 +1,123 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T21:08:43.604Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "expiry-revoke",
+    "mode": "confirmed testnet transaction",
+    "results": {
+      "expiry": {
+        "keyLabel": "C",
+        "expiryOnChainSec": 1790456590,
+        "attemptedAtSec": 1790456919,
+        "attemptedAfterExpiry": true,
+        "keyMetadataAfterExpiry": {
+          "address": "0x946aF5334Efcd33D76aEA3E814E214d3f229Cb96",
+          "keyType": "p256",
+          "expiry": "1790456590",
+          "spendPolicy": "limited",
+          "isRevoked": false
+        },
+        "rejection": {
+          "kind": "estimation_preflight_rejection_no_receipt",
+          "errorName": "ContractFunctionExecutionError",
+          "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\n\nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 1000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/writeContract\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9 <- The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9 <- An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x946af5334efcd33d76aea3e814e214d3f229cb96\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n \nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000000000000000000000000000000001\n  data:  0xa9059cbb000000",
+          "causes": [
+            {
+              "name": "ContractFunctionExecutionError",
+              "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\n\nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 1000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/writeContract\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "ContractFunctionRevertedError",
+              "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "TransactionExecutionError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x946af5334efcd33d76aea3e814e214d3f229cb96\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n \nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000000000000000000000000000000001\n  data:  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "EstimateGasExecutionError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x946af5334efcd33d76aea3e814e214d3f229cb96\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "InternalRpcError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x946af5334efcd33d76aea3e814e214d3f229cb96\",\"keyType\":\"p256\"}]}\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "RpcRequestError",
+              "message": "RPC Request failed.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x946af5334efcd33d76aea3e814e214d3f229cb96\",\"keyType\":\"p256\"}]}\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "(no name)",
+              "message": "Revm error: keychain validation failed: AccountKeychainError(KeyExpired(KeyExpired))"
+            }
+          ],
+          "revertData": null,
+          "decoded": null,
+          "receiptStatus": null,
+          "txHash": null
+        }
+      },
+      "revocation": {
+        "keyLabel": "D",
+        "keyMetadataBeforeRevocation": {
+          "address": "0x0000000000000000000000000000000000000000",
+          "keyType": "secp256k1",
+          "expiry": "0",
+          "spendPolicy": "unlimited",
+          "isRevoked": true
+        },
+        "revokeTxHash": "0x7080ae2d34b71bb215116a295ee220e7a935bdf73ee2bb5caf71dd1543d41f75",
+        "revokeExplorer": "https://explore.testnet.tempo.xyz/tx/0x7080ae2d34b71bb215116a295ee220e7a935bdf73ee2bb5caf71dd1543d41f75",
+        "keyMetadataAfterRevocation": {
+          "address": "0x0000000000000000000000000000000000000000",
+          "keyType": "secp256k1",
+          "expiry": "0",
+          "spendPolicy": "unlimited",
+          "isRevoked": true
+        },
+        "isRevokedOnChain": true,
+        "rejection": {
+          "kind": "estimation_preflight_rejection_no_receipt",
+          "errorName": "ContractFunctionExecutionError",
+          "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\n\nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 1000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/writeContract\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9 <- The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9 <- An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x461e17427546aacef4bec528e2f06d39ea11b059\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n \nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000",
+          "causes": [
+            {
+              "name": "ContractFunctionExecutionError",
+              "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\n\nContract Call:\n  address:   0x20c0000000000000000000000000000000000001\n  function:  transfer(address to, uint256 amount)\n  args:              (0xc197057273DccE7629ca33488f6F65bC105031F7, 1000000)\n  sender:    0xe87288E1C77EF3acc77530993206069703fc9b70\n\nDocs: https://viem.sh/docs/contract/writeContract\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "ContractFunctionRevertedError",
+              "message": "The contract function \"transfer\" reverted with the following reason:\nRevm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "TransactionExecutionError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x461e17427546aacef4bec528e2f06d39ea11b059\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n \nRequest Arguments:\n  from:  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:    0x20c0000000000000000000000000000000000001\n  data:  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "EstimateGasExecutionError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x461e17427546aacef4bec528e2f06d39ea11b059\",\"keyType\":\"p256\"}]}\n \nEstimate Gas Arguments:\n  from:                  0xe87288E1C77EF3acc77530993206069703fc9b70\n  to:                    0x20c0000000000000000000000000000000000001\n  data:                  0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\n  maxFeePerGas:          10.345 gwei\n  maxPriorityFeePerGas:  9.625 gwei\n  nonce:                 28\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "InternalRpcError",
+              "message": "An internal error was received.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x461e17427546aacef4bec528e2f06d39ea11b059\",\"keyType\":\"p256\"}]}\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "RpcRequestError",
+              "message": "RPC Request failed.\n\nURL: https://rpc.moderato.tempo.xyz\nRequest body: {\"method\":\"eth_estimateGas\",\"params\":[{\"from\":\"0xe87288E1C77EF3acc77530993206069703fc9b70\",\"nonce\":\"0x1c\",\"type\":\"0x76\",\"chainId\":\"0xa5bf\",\"calls\":[{\"to\":\"0x20c0000000000000000000000000000000000001\",\"value\":\"0x\",\"data\":\"0xa9059cbb000000000000000000000000c197057273dcce7629ca33488f6f65bc105031f700000000000000000000000000000000000000000000000000000000000f4240\"}],\"feeToken\":\"0x20c0000000000000000000000000000000000000\",\"keyId\":\"0x461e17427546aacef4bec528e2f06d39ea11b059\",\"keyType\":\"p256\"}]}\n\nDetails: Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))\nVersion: viem@2.56.9"
+            },
+            {
+              "name": "(no name)",
+              "message": "Revm error: keychain validation failed: AccountKeychainError(KeyAlreadyRevoked(KeyAlreadyRevoked))"
+            }
+          ],
+          "revertData": null,
+          "decoded": null,
+          "receiptStatus": null,
+          "txHash": null
+        }
+      }
+    },
+    "notes": "Expiry enforced by the chain before spending/scope checks (TIP-1011). Revocation confirmed on-chain via accountKeychain.revokeKey before the rejected transfer. Independent tests: separate keys C and D."
+  }
+]
