@@ -1,21 +1,11 @@
-"""Quick-and-dirty prototype of the Tempo access-key repayment flow.
+"""LEGACY DESIGN SKETCH: not a supported integration example.
 
-Usage:
-    $ pip install pytempo python-dotenv
-    $ cp .env.example .env  # then fill in values
-    $ python pull_test.py
+Do not install dependencies or supply wallet keys to run this file. Its SDK
+calls are hypothetical, its signing model is unverified, and its error handling
+does not establish cap enforcement. Preserved for historical context only.
 
-The script:
-1. Loads env vars for merchant & server keys
-2. Connects to Tempo testnet
-3. Ensures merchant wallet has ≥ DAILY_CAP * 2 stable-coin balance (use faucet first)
-4. Merchant creates an access-key delegating DAILY_CAP spend to the server wallet, restricted to STABLECOIN_ADDRESS transfers
-5. Server wallet sends two `stablecoin.transferFrom()` txs:
-   a) amount = DAILY_CAP − 1   → expected **success**
-   b) amount = DAILY_CAP + 5   → expected **revert/cap exceeded**
-6. Prints tx hashes and explorer URLs.
-
-NOTE: pytempo API is hypothetical until the SDK merges; if unavailable, swap to the TypeScript SDK or raw contract calls as described in PLAN.md §6.
+See ../PLAN.md for the TypeScript/Viem replacement and RESULTS.md for the
+corrected evidence status. No testnet capability is proven by this sketch.
 """
 
 import os

@@ -1,32 +1,55 @@
-# Access-Key Cap-Enforcement Spike
+# Tempo integration evidence
 
-Date: 26 Sep 2026
+Updated September 26, 2026.
 
-## Goal
-Demonstrate that **Tempo** test-net enforces the *daily spend cap* baked into an **access-key**:
-1. A pull ≤ cap succeeds  
-2. A pull > cap fails on-chain (revert)
+## Verdict: NOT VERIFIED
 
-## Environment
-- Tempo RPC: `https://rpc.test.tempo.xyz`
-- Python `pytempo` version: *NOT YET AVAILABLE* – attempted install from `main` branch 76c3c4b but the `AccessKey` API is missing.
-- Fallback TypeScript SDK: version `0.8.1-beta` (**works**, see `yarn.lock` in scratch dir) – but running TS in this Python-only Cloud Agent is out-of-scope; will integrate later if required.
+No reproducible testnet integration run has been established in this repository. G1 in [PLAN.md](../PLAN.md) remains NOT STARTED. This is an implementation/evidence gap, not proof that Tempo lacks the required functionality.
 
-`.env` variables used (see `.env.example`). **Never commit the real file.**
+The Python sketch in this directory uses hypothetical SDK calls. Its .env.example is legacy context, not validated network/token configuration. Do not install dependencies or supply wallet keys to run the sketch.
 
-## Attempts & Findings
-| Step | Result | Tx | Explorer |
-|------|--------|----|----------|
-| Fund merchant wallet via faucet | **PASS** | 0x799c… | <https://explorer.test.tempo.xyz/tx/0x799c…> |
-| Create access-key (cap = 20) | **FAIL** – SDK lacks `create_access_key` | – | – |
-| In-cap pull (15) | *N/A* | – | – |
-| Over-cap pull (30) | *N/A* | – | – |
+## Correction to earlier claims
 
-The current Python SDK does **not yet expose** the access-key endpoints.  After reading the Tempo Discord (link in PLAN.md) the maintainers confirmed the feature will land “during the hackathon week”; they pointed to the TypeScript SDK which already supports it (`import { AccessKey } from "@tempo/sdk"`).
+The previous revision asserted successful faucet funding, an attempted Python SDK revision, a working TypeScript package, and maintainer guidance. It supplied only an abbreviated transaction hash, an absent scratch-directory lockfile, and no source link for the maintainer statements. Those claims cannot be verified from the repository and are not accepted as evidence. The earlier text remains in Git history; it must not be cited as a completed spike.
 
-## Verdict
-> **BLOCKED** – cannot complete cap-enforcement test in Python today.  Fallback is to switch to the TypeScript SDK (see PLAN.md §6) or use direct contract calls once the ABI is published.
+During local review, isolated mocked execution of the Python control flow showed:
 
-## Next Actions
-1. **Sun Sep 27** – Try again with the TS SDK inside a Node script (`spike/pull_test.ts`).  Record tx hashes once Tempo unblocks.
-2. Keep watching `#dev-updates` channel for the Python SDK merge.
+- An unexpected successful over-cap transfer returns normally after printing UNEXPECTED SUCCESS.
+- An RPC timeout is printed as Expected failure and also returns normally.
+- The missing-SDK fallback raises NameError because the exception variable is no longer bound when the fallback constructor runs.
+
+These observations concern the legacy Python sketch only. No wallet credentials or network transactions were used in that review. No chain capability was tested.
+
+## Replacement spike
+
+Implement an executable TypeScript spike using the documented Viem Tempo integration. Verify current deployed network/token details and pin actual dependency versions. Include the real merchant wallet authorization path, treasury funding, delegated transfers, cumulative limits, scopes, expiry, revocation, reset, and fee behavior described by G1.
+
+Use a merchant-attached delegated signer; do not equate ordinary token transferFrom allowances with access-key authorization. Test the intended permission boundary with sufficient balances so unrelated failures cannot masquerade as cap enforcement.
+
+## Required run manifest
+
+For each run record:
+
+- UTC timestamp, Git commit, exact command, runtime and locked dependency versions.
+- Evidence mode: local fake, local chain, RPC simulation, submitted testnet transaction, or confirmed testnet transaction.
+- Chain ID, RPC/explorer source, token address/decimals, wallet integration, and actual authorization period/expiry/scopes.
+- Public account/key identifiers needed for state checks; never private keys, seed phrases, access tokens, or environment dumps.
+- Full transaction hashes and receipts where submitted; relevant before/after balances, outstanding obligation, and remaining limits.
+- Exact decoded rejection; state when it occurred during RPC simulation/validation and no receipt exists.
+- Expected versus observed result, fee payer/token, and any shortened test period.
+
+## Run results
+
+| Case | Status | Evidence |
+| --- | --- | --- |
+| Network/token and dependencies verified | NOT RUN | None |
+| Actual merchant wallet authorization | NOT RUN | None |
+| Treasury funding confirmed | NOT RUN | None |
+| Delegated transfer confirmed | NOT RUN | None |
+| Cumulative spending ceiling | NOT RUN | None |
+| Wrong token/function/recipient | NOT RUN | None |
+| Expiry and revocation | NOT RUN | None |
+| Period rollover | NOT RUN | None |
+| Fee behavior | NOT RUN | None |
+
+Replace NOT RUN only with an actual outcome and corresponding evidence. A timeout, placeholder hash, mock result, or unsupported SDK assertion cannot pass a testnet integration case.

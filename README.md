@@ -1,7 +1,19 @@
 # Float
 
-Same-day revenue-based cash advances for stable-coin merchants.  Underwritten by their on-chain sales history and repaid automatically as a capped slice of each day’s revenue, enforced by Tempo’s access-key daily spend limits.
+Float is a planned Tempo testnet demo of revenue-linked merchant advances: evaluate eligible stablecoin receipts, fund an advance, and collect repayments within merchant-authorized spending limits.
 
-This project is Stephen Yao’s solo submission to **Colosseum – Crypto World’s Fair 2026** (Tempo track).
+Float's application determines eligible receipts, collection amounts, and outstanding debt. Tempo access keys enforce configured token spending ceilings and permission scopes. Those keys do not establish genuine sales, enforce a percentage of revenue by themselves, or guarantee repayment.
 
-See **[PLAN.md](./PLAN.md)** for the full day-by-day build plan, architecture, milestones, demo script, and submission checklist.
+## Status
+
+Planning stage for Stephen Yao's Crypto World's Fair 2026 submission, Tempo track. There is no runnable application or verified live integration yet. The Python file in spike/ is a legacy hypothetical sketch, not an SDK example to install or run. Earlier funding/SDK claims are unverified; see [spike/RESULTS.md](spike/RESULTS.md).
+
+## Build handoff
+
+Read [PLAN.md](PLAN.md) for the agreed MVP, architecture, repayment policy, acceptance gates, ownership boundaries, and agent work packages. The next implementation session starts with G0 (workspace/shared contracts), then the G1 Tempo integration proof. Agents can develop fixtures and policy logic against the agreed interfaces while integration is being verified.
+
+Planned stack: Next.js/TypeScript, Viem's Tempo integration, Postgres, and one persistent Node worker. Scope: one testnet, one supported test token, one treasury, and one open advance per merchant. Synthetic histories must stay visibly separate from observed testnet activity.
+
+Setup and test commands will be added when the workspace exists and those commands have been run successfully. Do not use the legacy spike's guessed SDK APIs or network configuration as implementation instructions.
+
+See [DISCLOSURE.md](DISCLOSURE.md) for the current disclosure, to be reviewed against actual dependencies and work before submission. The project uses the [MIT license](LICENSE).
