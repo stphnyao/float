@@ -1,5 +1,5 @@
 import { z } from "zod";
-import { moneyAmountSchema } from "./money.js";
+import { hexAddressSchema, moneyAmountSchema } from "./money.js";
 import {
   paymentIntentKindSchema,
   paymentIntentStateSchema,
@@ -48,6 +48,8 @@ export const paymentOutcomeSchema = z.discriminatedUnion("status", [
     confirmedAtSec: z.number().int(),
     feeAmount: moneyAmountSchema.optional(),
     feePayer: z.string().optional(),
+    /** TIP-20 fee token charged (Tempo has no native gas token). */
+    feeToken: hexAddressSchema.optional(),
   }),
   z.object({
     status: z.literal("failed"),

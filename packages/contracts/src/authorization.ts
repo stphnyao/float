@@ -26,6 +26,8 @@ export const authorizationSchema = z.object({
   advanceId: z.string().uuid().nullable(),
   chainId: z.number().int().positive(),
   tokenAddress: hexAddressSchema,
+  /** Merchant root chain address whose keychain holds this key (needed to locate on-chain key metadata). */
+  chainAccountAddress: hexAddressSchema.nullable(),
   /** Address/identifier of the delegated key. */
   keyAddress: z.string().min(1),
   keyPublicKey: z.string().min(1).nullable(),

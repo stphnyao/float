@@ -33,11 +33,14 @@ export interface TempoAdapter {
    * Ingest confirmed transfers from `cursor` (inclusive) up to chain head.
    * Must only return confirmed events, support gap-free replay from the
    * returned cursor, and be idempotent per (chainId, txHash, logIndex).
-   * Callers may filter by token and recipient set.
+   * Callers may filter by token and recipient set. A refund pass may filter
+   * by `senders` instead: on-chain refunds leave the merchant, so they are
+   * normalized to negative-amount TransferEvents (money.ts permits negatives
+   * for adjustments) and classified by the policy layer.
    */
   ingestTransfers(
     cursor: IngestionCursor,
-    filter: { tokenAddress: HexAddress; recipients?: HexAddress[] },
+    filter: { tokenAddress: HexAddress; recipients?: HexAddress[]; senders?: HexAddress[] },
   ): Promise<{ events: TransferEvent[]; nextCursor: IngestionCursor }>;
 
   /**
