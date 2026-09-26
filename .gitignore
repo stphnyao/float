@@ -6,10 +6,22 @@
 __pycache__/
 *.py[cod]
 
-# Node / Yarn / pnpm caches
+# Node / pnpm
 node_modules/
+.next/
+.vercel/
+dist/
+coverage/
+*.tsbuildinfo
+
+# Local state
+.env*.local
+
 
 # Editor / OS
 .DS_Store
 .idea/
 .vscode/
+
+# ZCode session state
+.zcode/

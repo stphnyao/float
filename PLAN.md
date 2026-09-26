@@ -37,14 +37,14 @@ The demo uses a testnet treasury. The business narrative must identify a plausib
 
 ## 3. Repayment policy and trust boundaries
 
-| Rule | Enforcement | Evidence |
-| --- | --- | --- |
-| Percentage of eligible receipts | Float policy/ledger | Versioned receipt snapshot and calculation |
-| Maximum spending per period | Tempo access key | Authorized ceiling and cumulative-limit test |
-| Allowed token/function/recipient | Tempo access-key scopes | Valid transfer and rejection of other calls |
-| Stop at outstanding obligation | Float policy/ledger | Final partial payment and no post-payoff collection |
-| Expiry and revocation | Tempo | Rejection after expiry or confirmed revocation |
-| Genuine commercial sales | Classification and supporting evidence | Reasons, provenance, and uncertainty |
+| Rule                             | Enforcement                            | Evidence                                            |
+| -------------------------------- | -------------------------------------- | --------------------------------------------------- |
+| Percentage of eligible receipts  | Float policy/ledger                    | Versioned receipt snapshot and calculation          |
+| Maximum spending per period      | Tempo access key                       | Authorized ceiling and cumulative-limit test        |
+| Allowed token/function/recipient | Tempo access-key scopes                | Valid transfer and rejection of other calls         |
+| Stop at outstanding obligation   | Float policy/ledger                    | Final partial payment and no post-payoff collection |
+| Expiry and revocation            | Tempo                                  | Rejection after expiry or confirmed revocation      |
+| Genuine commercial sales         | Classification and supporting evidence | Reasons, provenance, and uncertainty                |
 
 The chain does not determine genuine revenue, Float's repayment percentage, or outstanding debt. A recurring key alone does not provide a lifetime debt ceiling. Display these boundaries. Payoff in the database does not revoke the on-chain key: stop the worker, prompt merchant revocation, and display actual authorization status separately.
 
@@ -105,7 +105,7 @@ Test beyond the presentation examples: concentrated legitimate revenue, volatili
 
 Use a TypeScript workspace: Next.js UI/API, documented **viem/tempo** integration, Postgres, and one persistent Node worker. Pin working versions during the spike. Do not build around hypothetical pytempo or assumed @tempo/sdk APIs. Postgres runs locally initially; hosting follows a reliable local lifecycle.
 
-~~~mermaid
+```mermaid
 flowchart LR
     W[Merchant wallet] --> UI[Next.js dashboard]
     UI --> API[Authenticated API]
@@ -118,26 +118,26 @@ flowchart LR
     J --> A[Viem Tempo adapter]
     A --> T
     W --> T
-~~~
+```
 
 Put chain calls behind an adapter for deterministic testing. Fakes must be visibly identified and cannot generate live-looking evidence.
 
 ### Planned paths (not yet implemented)
 
-| Path | Responsibility |
-| --- | --- |
-| apps/web/ | UI, wallet connection, authenticated HTTP handlers |
-| apps/worker/ | Ingestion, funding, collection, reconciliation orchestration |
-| packages/contracts/ | Shared DTOs, validation, statuses, adapter interfaces |
-| packages/chain/ | Tempo adapter and verified network/token configuration |
-| packages/policy/ | Classification, eligibility, sizing, budgets |
-| packages/db/ | Migrations, repositories, financial transactions and locks |
-| fixtures/ | Labeled deterministic histories and expected results |
-| tests/integration/ | Database/lifecycle tests |
-| tests/e2e/ | Wallet/dashboard/demo tests |
-| spike/ | Integration proof and evidence manifest |
-| docs/ | Decisions, setup, runbook, verification evidence |
-| submission/ | Demand findings, business assumptions, videos, checklist |
+| Path                | Responsibility                                               |
+| ------------------- | ------------------------------------------------------------ |
+| apps/web/           | UI, wallet connection, authenticated HTTP handlers           |
+| apps/worker/        | Ingestion, funding, collection, reconciliation orchestration |
+| packages/contracts/ | Shared DTOs, validation, statuses, adapter interfaces        |
+| packages/chain/     | Tempo adapter and verified network/token configuration       |
+| packages/policy/    | Classification, eligibility, sizing, budgets                 |
+| packages/db/        | Migrations, repositories, financial transactions and locks   |
+| fixtures/           | Labeled deterministic histories and expected results         |
+| tests/integration/  | Database/lifecycle tests                                     |
+| tests/e2e/          | Wallet/dashboard/demo tests                                  |
+| spike/              | Integration proof and evidence manifest                      |
+| docs/               | Decisions, setup, runbook, verification evidence             |
+| submission/         | Demand findings, business assumptions, videos, checklist     |
 
 ### Freeze these interfaces in G0
 
@@ -175,15 +175,15 @@ Payment intent: prepared -> submitted -> confirmed, failed, or unresolved. Unkno
 
 Every gate starts **NOT STARTED**. Passing requires actual commands, commit/version references, artifacts, and results. Distinguish local simulation, RPC simulation, submitted transaction, and confirmed transaction. Independent fixture/UI work may proceed while integration is blocked; dependent live features may not claim completion.
 
-| Gate | Target | Acceptance |
-| --- | --- | --- |
-| G0: foundation | Sep 26-27 | Scaffold workspace and one package manager; freeze interfaces/ownership; identify network/token/wallet candidates from official docs; document working setup/CI commands. |
-| G1: Tempo integration | Sep 27-29 | Pinned executable TS spike, actual wallet authorization, funding, delegated transfer, limits/scopes, expiry/revocation/reset, and fee behavior evidenced. |
-| G2: receipts and offers | Sep 28-Oct 1 | Idempotent ingestion, coverage tracking, labeled profiles/edge cases, reason codes, capacity-based sizing. Live ingestion depends on G1. |
-| G3: complete lifecycle | Sep 30-Oct 3 | Authenticated acceptance, confirmed funding, durable budgets/ledger, payoff/dashboard, duplicate/crash recovery tests. Depends on G1/G2. |
-| G4: demo readiness | Oct 4-6 | Failure matrix passes; real-wallet rehearsal; resettable fixtures; documented local boot/demo; reproducible evidence bundle. |
-| G5: presentation/freeze | Oct 7-9 | Videos, pitch/customer findings, reviewed disclosure, submission fields; freeze new features Oct 9. |
-| G6: submission | Oct 10-12 | Contingency Oct 10-11; target submission Oct 11. User submits by Oct 12, 11:59 p.m. Pacific; keeps confirmation privately. |
+| Gate                    | Target       | Acceptance                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| ----------------------- | ------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| G0: foundation          | Sep 26-27    | Scaffold workspace and one package manager; freeze interfaces/ownership; identify network/token/wallet candidates from official docs; document working setup/CI commands. **Status 2026-09-26: PARTIALLY EVIDENCED.** Done: pnpm@10.18.2 workspace scaffolded (apps/web, apps/worker, packages/contracts+chain+policy+db, fixtures/, tests/); interfaces frozen in packages/contracts (Money, states+transitions, evidence modes, RevenueSnapshot/Offer/Advance/Authorization/PaymentIntent, TempoAdapter, ApiResult+reason codes); drizzle schema + migration applied to postgres:16 (docker), one-open-advance partial unique index verified by insert attempts; `pnpm typecheck`/`pnpm test` exit 0; setup commands documented in docs/setup.md; CI workflow committed but not yet observed green on GitHub. Outstanding for full G0: observe CI green run; finalize wallet-integration candidate choice with G1. |
+| G1: Tempo integration   | Sep 27-29    | Pinned executable TS spike, actual wallet authorization, funding, delegated transfer, limits/scopes, expiry/revocation/reset, and fee behavior evidenced.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            |
+| G2: receipts and offers | Sep 28-Oct 1 | Idempotent ingestion, coverage tracking, labeled profiles/edge cases, reason codes, capacity-based sizing. Live ingestion depends on G1.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| G3: complete lifecycle  | Sep 30-Oct 3 | Authenticated acceptance, confirmed funding, durable budgets/ledger, payoff/dashboard, duplicate/crash recovery tests. Depends on G1/G2.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| G4: demo readiness      | Oct 4-6      | Failure matrix passes; real-wallet rehearsal; resettable fixtures; documented local boot/demo; reproducible evidence bundle.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| G5: presentation/freeze | Oct 7-9      | Videos, pitch/customer findings, reviewed disclosure, submission fields; freeze new features Oct 9.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| G6: submission          | Oct 10-12    | Contingency Oct 10-11; target submission Oct 11. User submits by Oct 12, 11:59 p.m. Pacific; keeps confirmation privately.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
 
 Customer discovery, capital/distribution assumptions, and useful progress updates run throughout, independently of integration.
 
@@ -200,19 +200,19 @@ Customer discovery, capital/distribution assumptions, and useful progress update
 
 ### G3/G4 matrix
 
-| Scenario | Required result |
-| --- | --- |
-| Duplicate acceptance/funding | One advance and one economic disbursement |
-| Duplicate jobs/concurrent triggers | No duplicate collection or reservation |
-| Crash around broadcast/lost RPC response | Reconcile known transaction; no blind replacement payment |
-| Unresolved transaction across period rollover | Retain reservation; reconcile before new collection |
-| Zero receipts | No repayment transaction |
-| Incomplete history/scan gap | Insufficient evidence or pause |
-| Refund/self-transfer/Float disbursement | Correct exclusion/adjustment |
-| Remaining debt below normal payment | Exact final payment, then stop |
-| Insufficient balance/revoked/expired key | Accurate paused state |
-| Duplicate event/receipt ingestion | No doubled revenue or repayment |
-| Auth/offer replay or another merchant's ID | Rejected without financial mutation |
+| Scenario                                      | Required result                                           |
+| --------------------------------------------- | --------------------------------------------------------- |
+| Duplicate acceptance/funding                  | One advance and one economic disbursement                 |
+| Duplicate jobs/concurrent triggers            | No duplicate collection or reservation                    |
+| Crash around broadcast/lost RPC response      | Reconcile known transaction; no blind replacement payment |
+| Unresolved transaction across period rollover | Retain reservation; reconcile before new collection       |
+| Zero receipts                                 | No repayment transaction                                  |
+| Incomplete history/scan gap                   | Insufficient evidence or pause                            |
+| Refund/self-transfer/Float disbursement       | Correct exclusion/adjustment                              |
+| Remaining debt below normal payment           | Exact final payment, then stop                            |
+| Insufficient balance/revoked/expired key      | Accurate paused state                                     |
+| Duplicate event/receipt ingestion             | No doubled revenue or repayment                           |
+| Auth/offer replay or another merchant's ID    | Rejected without financial mutation                       |
 
 Default CI uses fakes/local resources. Funded testnet writes are an explicit integration run, not a side effect of ordinary tests.
 
@@ -254,14 +254,14 @@ Label accelerated periods and fixture switches. A separate payoff fixture may pr
 
 The owner will create agents; this plan does not launch them. Use one integrator and bounded packages.
 
-| Package | Owned paths | Dependencies | Done when |
-| --- | --- | --- | --- |
-| A: foundation/integration | Root config/lockfile, packages/contracts/, CI, canonical docs | Starts with G0 | Workspace/interfaces and verification commands work; integration preserves invariants |
-| B: Tempo adapter | spike/, packages/chain/ | G0 interfaces; research can start immediately | G1 evidence and typed adapter errors; real wallet flow |
-| C: receipts/policy | packages/policy/, fixtures/ | G0 DTOs; independent with fakes | G2 rules, reason codes, sizing, deterministic cases |
-| D: ledger/worker | packages/db/, apps/worker/, worker integration tests | G0; B/C for live integration | Migrations, ingestion, funding/collection, reservations, recovery pass G3/G4 |
-| E: merchant app | apps/web/, tests/e2e/ | G0; B wallet proof; C/D for live state | Authentication, offers, permissions, ledger UI, evidence labels, revocation |
-| F: product/submission | submission/ | Research can start immediately | Sourced findings, business assumptions, videos, checklist; no invented interviews |
+| Package                   | Owned paths                                                   | Dependencies                                  | Done when                                                                             |
+| ------------------------- | ------------------------------------------------------------- | --------------------------------------------- | ------------------------------------------------------------------------------------- |
+| A: foundation/integration | Root config/lockfile, packages/contracts/, CI, canonical docs | Starts with G0                                | Workspace/interfaces and verification commands work; integration preserves invariants |
+| B: Tempo adapter          | spike/, packages/chain/                                       | G0 interfaces; research can start immediately | G1 evidence and typed adapter errors; real wallet flow                                |
+| C: receipts/policy        | packages/policy/, fixtures/                                   | G0 DTOs; independent with fakes               | G2 rules, reason codes, sizing, deterministic cases                                   |
+| D: ledger/worker          | packages/db/, apps/worker/, worker integration tests          | G0; B/C for live integration                  | Migrations, ingestion, funding/collection, reservations, recovery pass G3/G4          |
+| E: merchant app           | apps/web/, tests/e2e/                                         | G0; B wallet proof; C/D for live state        | Authentication, offers, permissions, ledger UI, evidence labels, revocation           |
+| F: product/submission     | submission/                                                   | Research can start immediately                | Sourced findings, business assumptions, videos, checklist; no invented interviews     |
 
 After G0, suggested initial assignments are B, C, and D; integrator A owns shared contracts. E can start screens with labeled fixtures when capacity permits. E owns HTTP handlers; D owns persistence/financial transactions and worker orchestration. Agree their service boundary through A.
 

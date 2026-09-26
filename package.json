@@ -1,0 +1,26 @@
+{
+  "name": "float",
+  "version": "0.0.0",
+  "private": true,
+  "packageManager": "pnpm@10.18.2",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "build": "pnpm --filter @float/web build",
+    "typecheck": "pnpm -r --no-bail typecheck",
+    "test": "pnpm -r --no-bail test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "dev:web": "pnpm --filter @float/web dev",
+    "dev:worker": "pnpm --filter @float/worker dev",
+    "db:up": "docker compose up -d postgres",
+    "db:down": "docker compose down -v",
+    "db:generate": "pnpm --filter @float/db generate",
+    "db:migrate": "pnpm --filter @float/db migrate"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "typescript": "^5.6.3"
+  }
+}

@@ -8,6 +8,8 @@ Float's application determines eligible receipts, collection amounts, and outsta
 
 Planning stage for Stephen Yao's Crypto World's Fair 2026 submission, Tempo track. There is no runnable application or verified live integration yet. The Python file in spike/ is a legacy hypothetical sketch, not an SDK example to install or run. Earlier funding/SDK claims are unverified; see [spike/RESULTS.md](spike/RESULTS.md).
 
+**G0 foundation is in place (2026-09-26):** pnpm TypeScript workspace with frozen shared contracts (`packages/contracts`), Drizzle/Postgres schema with the one-open-advance invariant verified, minimal web/worker apps, CI config, and documented setup in [docs/setup.md](docs/setup.md). The Tempo integration remains NOT VERIFIED (G1 next); `packages/chain` refuses to construct a live adapter until spike evidence exists.
+
 ## Build handoff
 
 Read [PLAN.md](PLAN.md) for the agreed MVP, architecture, repayment policy, acceptance gates, ownership boundaries, and agent work packages. The next implementation session starts with G0 (workspace/shared contracts), then the G1 Tempo integration proof. Agents can develop fixtures and policy logic against the agreed interfaces while integration is being verified.

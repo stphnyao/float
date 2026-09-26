@@ -1,0 +1,20 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: float-postgres
+    environment:
+      POSTGRES_USER: float
+      POSTGRES_PASSWORD: float
+      POSTGRES_DB: float
+    ports:
+      - "54329:5432"
+    volumes:
+      - float-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U float -d float"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+volumes:
+  float-pgdata:

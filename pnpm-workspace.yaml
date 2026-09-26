@@ -1,0 +1,10 @@
+packages:
+  - apps/*
+  - packages/*
+  - spike
+  - tests/*
+
+# pnpm 10 blocks dependency build scripts unless allowlisted.
+onlyBuiltDependencies:
+  - esbuild
+  - sharp

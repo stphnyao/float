@@ -40,16 +40,16 @@ For each run record:
 
 ## Run results
 
-| Case | Status | Evidence |
-| --- | --- | --- |
-| Network/token and dependencies verified | NOT RUN | None |
-| Actual merchant wallet authorization | NOT RUN | None |
-| Treasury funding confirmed | NOT RUN | None |
-| Delegated transfer confirmed | NOT RUN | None |
-| Cumulative spending ceiling | NOT RUN | None |
-| Wrong token/function/recipient | NOT RUN | None |
-| Expiry and revocation | NOT RUN | None |
-| Period rollover | NOT RUN | None |
-| Fee behavior | NOT RUN | None |
+| Case                                    | Status  | Evidence |
+| --------------------------------------- | ------- | -------- |
+| Network/token and dependencies verified | NOT RUN | None     |
+| Actual merchant wallet authorization    | NOT RUN | None     |
+| Treasury funding confirmed              | NOT RUN | None     |
+| Delegated transfer confirmed            | NOT RUN | None     |
+| Cumulative spending ceiling             | NOT RUN | None     |
+| Wrong token/function/recipient          | NOT RUN | None     |
+| Expiry and revocation                   | NOT RUN | None     |
+| Period rollover                         | NOT RUN | None     |
+| Fee behavior                            | NOT RUN | None     |
 
 Replace NOT RUN only with an actual outcome and corresponding evidence. A timeout, placeholder hash, mock result, or unsupported SDK assertion cannot pass a testnet integration case.
