@@ -94,6 +94,13 @@ export const advances = pgTable(
       mode: "bigint",
     }).notNull(),
     periodAnchor: timestamp("period_anchor", { withTimezone: true }).notNull(),
+    /**
+     * Accurate reason code while paused (COLLECTION_* codes from
+     * @float/contracts). Null unless the advance is paused. Pausing is a
+     * safety state, never proof of default or fraud (PLAN section 6.8).
+     */
+    pauseReasonCode: text("pause_reason_code"),
+    pausedAt: timestamp("paused_at", { withTimezone: true }),
     createdAt: timestamp("created_at", { withTimezone: true })
       .notNull()
       .defaultNow(),
@@ -107,6 +114,10 @@ export const advances = pgTable(
     uniqueIndex("advances_one_open_per_merchant")
       .on(t.merchantId)
       .where(sql`state in ('funding_pending', 'active', 'paused')`),
+    // Acceptance idempotency arbiter: an offer can produce exactly one
+    // advance, ever. Duplicate acceptance returns the existing row instead
+    // of creating a second one (ledger package D, G3 matrix row 1).
+    uniqueIndex("advances_offer_once").on(t.offerId),
   ],
 );
 
@@ -215,29 +226,48 @@ export const revenueSnapshots = pgTable(
   },
   (t) => [
     index("revenue_snapshots_merchant_window").on(t.merchantId, t.windowStart),
+    // Snapshot freeze arbiter: at most one frozen snapshot per merchant per
+    // anchored window. Complete snapshots are insert-once; incomplete windows
+    // are not persisted so a later gap-free rebuild can freeze them.
+    uniqueIndex("revenue_snapshots_merchant_window_once").on(
+      t.merchantId,
+      t.windowStart,
+    ),
   ],
 );
 
-export const collectionBudgets = pgTable("collection_budgets", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  advanceId: uuid("advance_id")
-    .notNull()
-    .references(() => advances.id),
-  periodStart: timestamp("period_start", { withTimezone: true }).notNull(),
-  periodEnd: timestamp("period_end", { withTimezone: true }).notNull(),
-  eligibleReceiptsAmount: bigint("eligible_receipts_amount", {
-    mode: "bigint",
-  }).notNull(),
-  rateBps: integer("rate_bps").notNull(),
-  ceilingAmount: bigint("ceiling_amount", { mode: "bigint" }).notNull(),
-  budgetAmount: bigint("budget_amount", { mode: "bigint" }).notNull(),
-  remainingAmount: bigint("remaining_amount", { mode: "bigint" }).notNull(),
-  snapshotId: uuid("snapshot_id").references(() => revenueSnapshots.id),
-  status: text("status").$type<BudgetStatus>().notNull(),
-  createdAt: timestamp("created_at", { withTimezone: true })
-    .notNull()
-    .defaultNow(),
-});
+export const collectionBudgets = pgTable(
+  "collection_budgets",
+  {
+    id: uuid("id").primaryKey().defaultRandom(),
+    advanceId: uuid("advance_id")
+      .notNull()
+      .references(() => advances.id),
+    periodStart: timestamp("period_start", { withTimezone: true }).notNull(),
+    periodEnd: timestamp("period_end", { withTimezone: true }).notNull(),
+    eligibleReceiptsAmount: bigint("eligible_receipts_amount", {
+      mode: "bigint",
+    }).notNull(),
+    rateBps: integer("rate_bps").notNull(),
+    ceilingAmount: bigint("ceiling_amount", { mode: "bigint" }).notNull(),
+    budgetAmount: bigint("budget_amount", { mode: "bigint" }).notNull(),
+    remainingAmount: bigint("remaining_amount", { mode: "bigint" }).notNull(),
+    snapshotId: uuid("snapshot_id").references(() => revenueSnapshots.id),
+    status: text("status").$type<BudgetStatus>().notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .notNull()
+      .defaultNow(),
+  },
+  (t) => [
+    // One budget per advance per anchored collection period: createBudgets is
+    // idempotent, and unused expired budgets are superseded, never accumulated
+    // as catch-up charges (PLAN section 3).
+    uniqueIndex("collection_budgets_advance_period_once").on(
+      t.advanceId,
+      t.periodStart,
+    ),
+  ],
+);
 
 export const paymentIntents = pgTable(
   "payment_intents",
@@ -328,6 +358,16 @@ export const ingestionCursors = pgTable(
     chainId: integer("chain_id").notNull(),
     tokenAddress: text("token_address").notNull(),
     nextBlockNumber: bigint("next_block_number", { mode: "number" }).notNull(),
+    /**
+     * Observed scan coverage in seconds, derived conservatively from ingested
+     * event timestamps (see tests/integration/README and worker ingestion
+     * job): a revenue window is complete only when fully inside
+     * [coverage_start_sec, coverage_end_sec]. Null until the first event is
+     * ingested. The frozen adapter contract cannot report scanned block
+     * ranges directly, so coverage is inferred — conservative by design.
+     */
+    coverageStartSec: bigint("coverage_start_sec", { mode: "number" }),
+    coverageEndSec: bigint("coverage_end_sec", { mode: "number" }),
     updatedAt: timestamp("updated_at", { withTimezone: true })
       .notNull()
       .defaultNow(),

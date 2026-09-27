@@ -1,23 +1,33 @@
-import { resolveDatabaseUrl } from "@float/db";
-
 /**
- * One persistent worker owns: receipt ingestion, funding, collection, and
- * reconciliation (work package D). Invariants it must uphold live in
- * PLAN.md section 6 — notably: persist intent + reservation + transaction
- * identity before broadcast; an unresolved transaction blocks new collection
- * for its advance until reconciled; only reconciled events move money state.
+ * Library surface of the Float worker (work package D). The executable CLI
+ * lives in src/main.ts (`pnpm --filter @float/worker start`). Manual job
+ * triggers are OPERATOR-ONLY: they are exposed exclusively through this CLI,
+ * never through read-only API paths (PLAN section 6.10).
  */
-async function main() {
-  const hasDb = Boolean(process.env.DATABASE_URL);
-  console.log(
-    `[float-worker] starting; DATABASE_URL ${hasDb ? "set" : "unset (default local)"} (${resolveDatabaseUrl().replace(/:\/\/.*@/, "://***@")})`,
-  );
-  console.log(
-    "[float-worker] no jobs registered yet — package D implements ingestion/funding/collection/reconciliation",
-  );
-}
-
-main().catch((err) => {
-  console.error("[float-worker] fatal", err);
-  process.exit(1);
-});
+export { loadWorkerConfig, type WorkerConfig } from "./config.js";
+export { createWorkerContext, type WorkerContext } from "./context.js";
+export {
+  policyReceiptPipeline,
+  type ReceiptPipeline,
+  type PipelineClassifiedEvent,
+  type PipelineSnapshot,
+  type BuildSnapshotsRequest,
+} from "./pipeline.js";
+export {
+  JOB_NAMES,
+  isJobName,
+  runJob,
+  runOnce,
+  type JobName,
+} from "./jobs/index.js";
+export {
+  ingestReceipts,
+  createBudgets,
+  fundAdvances,
+  runCollections,
+  reconcileUnresolved,
+  pauseOnBlocked,
+  broadcastAndReconcile,
+  lastCompletedWindowIndex,
+} from "./jobs/index.js";
+export { toContractIntent } from "./jobs/broadcast.js";

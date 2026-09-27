@@ -11,11 +11,15 @@
     "@float/chain": "workspace:*",
     "@float/contracts": "workspace:*",
     "@float/db": "workspace:*",
-    "@float/policy": "workspace:*"
+    "@float/policy": "workspace:*",
+    "@float/worker": "workspace:*",
+    "drizzle-orm": "^0.44.0",
+    "pg": "^8.13.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
     "typescript": "^5.6.3",
-    "vitest": "^3.0.0"
+    "vitest": "^3.0.0",
+    "@types/pg": "^8.13.0"
   }
 }
