@@ -81,13 +81,13 @@ Per PLAN §10: "External outreach, posting, or submission requires user directio
 
 ## 6. Evidence status (honest)
 
-| Evidence type | Status as of 2026-09-26 |
-| --- | --- |
-| Operator interviews | **None.** |
-| Surveys or polls | **None.** |
-| Signups / waitlist / LOIs | **None.** |
+| Evidence type                                                 | Status as of 2026-09-26                                                                                                          |
+| ------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| Operator interviews                                           | **None.**                                                                                                                        |
+| Surveys or polls                                              | **None.**                                                                                                                        |
+| Signups / waitlist / LOIs                                     | **None.**                                                                                                                        |
 | Observed merchants receiving stablecoin B2B payments on Tempo | **None.** G1 (Tempo integration) is NOT STARTED per [spike/RESULTS.md](../spike/RESULTS.md); no live receipts of any kind exist. |
-| Competitor/alternative pricing verified first-hand | **None** (§3 ranges are from industry marketing sources). |
+| Competitor/alternative pricing verified first-hand            | **None** (§3 ranges are from industry marketing sources).                                                                        |
 
 Consequences for the submission:
 

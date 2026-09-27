@@ -104,6 +104,7 @@ function makeAuthorization(): Authorization {
     advanceId: null,
     chainId: CHAIN_ID,
     tokenAddress: TOKEN,
+    chainAccountAddress: MERCHANT,
     keyAddress: KEY_ID,
     keyPublicKey: "0x9a",
     scopes: [
