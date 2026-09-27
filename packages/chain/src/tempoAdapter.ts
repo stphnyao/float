@@ -277,8 +277,12 @@ export function createTempoAdapter(
      */
     async ingestTransfers(
       cursor: IngestionCursor,
-      filter: { tokenAddress: Address; recipients?: Address[] },
-    ): Promise<{ events: TransferEvent[]; nextCursor: IngestionCursor }> {
+      filter: { tokenAddress: Address; recipients?: Address[]; senders?: Address[] },
+    ): Promise<{
+      events: TransferEvent[];
+      nextCursor: IngestionCursor;
+      scannedRange?: { fromBlockNumber: number; toBlockNumber: number };
+    }> {
       await verifyNetwork();
       const head = Number(await client.getBlockNumber());
       if (cursor.nextBlockNumber > head) {
@@ -295,12 +299,13 @@ export function createTempoAdapter(
         cursor.nextBlockNumber + MAX_INGEST_BLOCKS - 1,
       );
 
+      const logArgs: { from?: Address[]; to?: Address[] } = {};
+      if (filter.senders?.length) logArgs.from = [...filter.senders];
+      if (filter.recipients?.length) logArgs.to = [...filter.recipients];
       const logs = await client.getLogs({
         address: filter.tokenAddress,
         event: TIP20_TRANSFER_EVENT,
-        args: filter.recipients?.length
-          ? { to: [...filter.recipients] }
-          : undefined,
+        args: Object.keys(logArgs).length ? logArgs : undefined,
         fromBlock: BigInt(cursor.nextBlockNumber),
         toBlock: BigInt(end),
       });
@@ -339,6 +344,7 @@ export function createTempoAdapter(
       return {
         events,
         nextCursor: { chainId: config.chainId, nextBlockNumber: end + 1 },
+        scannedRange: { fromBlockNumber: cursor.nextBlockNumber, toBlockNumber: end },
       };
     },
 

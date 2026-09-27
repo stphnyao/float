@@ -37,11 +37,19 @@ export interface TempoAdapter {
    * by `senders` instead: on-chain refunds leave the merchant, so they are
    * normalized to negative-amount TransferEvents (money.ts permits negatives
    * for adjustments) and classified by the policy layer.
+   *
+   * When blocks were actually scanned, implementations should return
+   * `scannedRange` so callers can track scan coverage in block terms —
+   * event timestamps alone cannot prove a quiet (empty) tail was scanned.
    */
   ingestTransfers(
     cursor: IngestionCursor,
     filter: { tokenAddress: HexAddress; recipients?: HexAddress[]; senders?: HexAddress[] },
-  ): Promise<{ events: TransferEvent[]; nextCursor: IngestionCursor }>;
+  ): Promise<{
+    events: TransferEvent[];
+    nextCursor: IngestionCursor;
+    scannedRange?: { fromBlockNumber: number; toBlockNumber: number };
+  }>;
 
   /**
    * Prepare a payment for the intent (build the scoped call). No state change.
