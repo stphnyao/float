@@ -3,9 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "start": "tsx src/index.ts",
+    "dev": "tsx watch src/main.ts",
+    "start": "tsx src/main.ts",
     "typecheck": "tsc --noEmit",
     "test": "vitest run --passWithNoTests"
   },
@@ -13,7 +16,9 @@
     "@float/chain": "workspace:*",
     "@float/contracts": "workspace:*",
     "@float/db": "workspace:*",
-    "tsx": "^4.19.0"
+    "@float/policy": "workspace:*",
+    "tsx": "^4.19.0",
+    "drizzle-orm": "^0.44.0"
   },
   "devDependencies": {
     "@types/node": "^22.10.0",
