@@ -1,0 +1,39 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T20:57-21:05Z (debug session, recorded afterwards)",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "fee-probes (discovery experiments that established the fee/limit model)",
+    "cases": [
+      {
+        "probe": "key A spend with client-default fee token pathUSD but NO pathUSD limit entry on the key",
+        "observed": "REJECTED: Account keychain error: SpendingLimitExceeded(SpendingLimitExceeded) during eth_sendRawTransactionSync",
+        "classification": "estimation/preflight rejection (no receipt, no tx hash)",
+        "conclusion": "With enforceLimits=true, FEE PAYMENT is itself limit-enforced; a key whose limit set has no entry for the fee token cannot pay fees at all."
+      },
+      {
+        "probe": "same key A spend with explicit feeToken = AlphaUSD (the limit token)",
+        "observed": "SUCCESS; tx 0x6a8476edcb89e4510c023352d743a2ff0ec8614bb71a6adb9423f93af994dda6 (1 base unit transferred)",
+        "remainingBefore": "20000000",
+        "remainingAfter": "19999439",
+        "conclusion": "Fees paid in the LIMIT TOKEN count against that token limit (561 deducted = 1 transfer + 560 fee)."
+      },
+      {
+        "probe": "root (non-key) transfer with feeToken pathUSD",
+        "observed": "SUCCESS; tx 0xf02a1cbfa34f67cc5839b525e5d23f2de65157a789bfe3ff5736df79cab20391",
+        "conclusion": "Root account has no limits; fee model normal (feePayer = sender)."
+      },
+      {
+        "probe": "accessKey.updateSpendingLimit adding a pathUSD limit to a key authorized without one",
+        "observed": "SUCCESS; sets limit AND remaining, but period is 0 (lifetime) - updateSpendingLimit cannot set a period",
+        "conclusion": "Fee-token limits with recurring periods must be configured AT AUTHORIZATION TIME (the re-authorized keys A-D include pathUSD limits at authorize time)."
+      },
+      {
+        "probe": "updateSpendingLimit on an EXPIRED key (old key C)",
+        "observed": "REVERTED: Account keychain error: KeyExpired(KeyExpired) - preflight",
+        "conclusion": "Expiry enforcement applies to keychain management calls targeting the key."
+      }
+    ],
+    "finalConfiguration": "All subsequent evidence uses keys authorized with DUAL limits: [collection token recurring ceiling, pathUSD fee-token recurring allowance] and scope transfer(collection token) -> treasury only."
+  }
+]

@@ -1,0 +1,53 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T20:52:34.123Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "verify-network",
+    "chainIdRpc": 42431,
+    "chainIdExpected": 42431,
+    "blockNumberHex": "0x2352754",
+    "clientVersion": "tempo/v1.15.0-464e519/x86_64-unknown-linux-gnu",
+    "explorerUrl": "https://explore.testnet.tempo.xyz",
+    "viemPinned": "2.56.9",
+    "oxResolved": "0.14.45 (via viem)",
+    "node": "v20.19.4",
+    "platform": "win32",
+    "tokens": {
+      "pathUSD": {
+        "address": "0x20c0000000000000000000000000000000000000",
+        "name": "PathUSD",
+        "symbol": "pathUSD",
+        "decimals": 6,
+        "currency": "USD",
+        "totalSupply": "18564154091709551615000"
+      },
+      "AlphaUSD": {
+        "address": "0x20c0000000000000000000000000000000000001",
+        "name": "AlphaUSD",
+        "symbol": "alphaUSD",
+        "decimals": 6,
+        "currency": "USD",
+        "totalSupply": "18582601011783261166615"
+      },
+      "BetaUSD": {
+        "address": "0x20c0000000000000000000000000000000000002",
+        "name": "BetaUSD",
+        "symbol": "betaUSD",
+        "decimals": 6,
+        "currency": "USD",
+        "totalSupply": "18582582451783261166615"
+      },
+      "ThetaUSD": {
+        "address": "0x20c0000000000000000000000000000000000003",
+        "name": "ThetaUSD",
+        "symbol": "thetaUSD",
+        "decimals": 6,
+        "currency": "USD",
+        "totalSupply": "18582575860783261166615"
+      }
+    },
+    "explorerExample": "https://explore.testnet.tempo.xyz/tx/0x0000000000000000000000000000000000000000000000000000000000000000",
+    "notes": "Chain ID verified over RPC before any write; token decimals read on-chain (6), never assumed."
+  }
+]

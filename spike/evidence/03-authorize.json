@@ -1,0 +1,310 @@
+[
+  {
+    "recordedAtUtc": "2026-09-26T20:54:23.424Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "A",
+    "purpose": "cumulative ceiling test (20 units / 86400s)",
+    "accessKeyAddress": "0xa9fd79ed2bdfc08c988566ff01d98786690c7466",
+    "keyType": "p256",
+    "authorizationTxHash": "0x5fe4bab287b680a764227c6774a06b4e42ad658ad5bbb265dcd014e49639216d",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x5fe4bab287b680a764227c6774a06b4e42ad658ad5bbb265dcd014e49639216d",
+    "receiptStatus": "success",
+    "blockNumber": 37038092,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3302100",
+    "limitBaseUnits": "20000000",
+    "periodSeconds": 86400,
+    "expiryConfiguredSec": 1793048061,
+    "expiryOnChain": "1793048061",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingBaseUnits": "20000000",
+      "periodEndSec": "1790542458"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time per TIP-1011."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T20:54:24.025Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "B",
+    "purpose": "short-period (60s) reset observation",
+    "accessKeyAddress": "0xd0898ba7f158ae25f03580267076bc6817bfcc25",
+    "keyType": "p256",
+    "authorizationTxHash": "0x97868821919015e11c0cef529948087349c7d461cea5b480221d697bb0c1620d",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x97868821919015e11c0cef529948087349c7d461cea5b480221d697bb0c1620d",
+    "receiptStatus": "success",
+    "blockNumber": 37038093,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3302100",
+    "limitBaseUnits": "20000000",
+    "periodSeconds": 60,
+    "expiryConfiguredSec": 1790542461,
+    "expiryOnChain": "1790542461",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingBaseUnits": "20000000",
+      "periodEndSec": "1790456119"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time per TIP-1011."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T20:54:24.634Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "C",
+    "purpose": "expiry rejection test (expires ~150s after authorization)",
+    "accessKeyAddress": "0xb665840b660b769f21931e9baf7cda4cf7c0d111",
+    "keyType": "p256",
+    "authorizationTxHash": "0x2c38bb410de77ff8479656409168566c29b2772caa5ce155ea8bd7194805ef1f",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x2c38bb410de77ff8479656409168566c29b2772caa5ce155ea8bd7194805ef1f",
+    "receiptStatus": "success",
+    "blockNumber": 37038094,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3302100",
+    "limitBaseUnits": "5000000",
+    "periodSeconds": null,
+    "expiryConfiguredSec": 1790456211,
+    "expiryOnChain": "1790456211",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingBaseUnits": "5000000",
+      "periodEndSec": "0"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time per TIP-1011."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T20:54:25.878Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "D",
+    "purpose": "revocation rejection test (revoked on-chain, then used)",
+    "accessKeyAddress": "0x2565f098d662ef65240da08425e57e6c71eb4d81",
+    "keyType": "p256",
+    "authorizationTxHash": "0x55e044d4c0b9b903193dc95f1270ea74be598eff4affa594945fd62725c7992b",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x55e044d4c0b9b903193dc95f1270ea74be598eff4affa594945fd62725c7992b",
+    "receiptStatus": "success",
+    "blockNumber": 37038096,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3302100",
+    "limitBaseUnits": "5000000",
+    "periodSeconds": null,
+    "expiryConfiguredSec": 1790542461,
+    "expiryOnChain": "1790542461",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingBaseUnits": "5000000",
+      "periodEndSec": "0"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time per TIP-1011."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T21:00:45.483Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "A",
+    "purpose": "cumulative ceiling test (20 units / 86400s)",
+    "merchantRootAddress": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+    "accessKeyIdAddress": "0x470f4cdff6f7bf4a63aac5123315ded6d5690508",
+    "keyType": "p256",
+    "authorizationTxHash": "0x550003821ab44de465dda0ea4bb8957cf9c68fb1c91eedc033cba325c5549044",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x550003821ab44de465dda0ea4bb8957cf9c68fb1c91eedc033cba325c5549044",
+    "receiptStatus": "success",
+    "blockNumber": 37038730,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3802100",
+    "limitsConfigured": [
+      {
+        "token": "0x20c0000000000000000000000000000000000001",
+        "limitBaseUnits": "20000000",
+        "periodSeconds": 86400
+      },
+      {
+        "token": "0x20c0000000000000000000000000000000000000",
+        "limitBaseUnits": "1000000",
+        "periodSeconds": 86400,
+        "reason": "fee payment is itself limit-enforced; without this entry every key spend fails SpendingLimitExceeded"
+      }
+    ],
+    "expiryConfiguredSec": 1793048440,
+    "expiryOnChain": "1793048440",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingPrimaryBaseUnits": "20000000",
+      "periodEndPrimarySec": "1790542840",
+      "remainingFeeTokenBaseUnits": "1000000"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time (periodEnd = authorize_time + period), confirmed by on-chain reads."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T21:00:46.650Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "B",
+    "purpose": "short-period (60s) reset observation",
+    "merchantRootAddress": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+    "accessKeyIdAddress": "0x6a7005704345afd8646250ae9af34d3dc0bfffaf",
+    "keyType": "p256",
+    "authorizationTxHash": "0x3f879426d32dfec2cf555e790b695ebe4f556a302b5db8313d5891221e81b996",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x3f879426d32dfec2cf555e790b695ebe4f556a302b5db8313d5891221e81b996",
+    "receiptStatus": "success",
+    "blockNumber": 37038732,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3802100",
+    "limitsConfigured": [
+      {
+        "token": "0x20c0000000000000000000000000000000000001",
+        "limitBaseUnits": "20000000",
+        "periodSeconds": 60
+      },
+      {
+        "token": "0x20c0000000000000000000000000000000000000",
+        "limitBaseUnits": "1000000",
+        "periodSeconds": 60,
+        "reason": "fee payment is itself limit-enforced; without this entry every key spend fails SpendingLimitExceeded"
+      }
+    ],
+    "expiryConfiguredSec": 1790542840,
+    "expiryOnChain": "1790542840",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingPrimaryBaseUnits": "20000000",
+      "periodEndPrimarySec": "1790456501",
+      "remainingFeeTokenBaseUnits": "1000000"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time (periodEnd = authorize_time + period), confirmed by on-chain reads."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T21:00:47.896Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "C",
+    "purpose": "expiry rejection test (expires ~150s after authorization)",
+    "merchantRootAddress": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+    "accessKeyIdAddress": "0x946af5334efcd33d76aea3e814e214d3f229cb96",
+    "keyType": "p256",
+    "authorizationTxHash": "0xa3e75185b1e0ad6a0a82e3b1c2f27945a0889afb68854979643e654070f9e8ff",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0xa3e75185b1e0ad6a0a82e3b1c2f27945a0889afb68854979643e654070f9e8ff",
+    "receiptStatus": "success",
+    "blockNumber": 37038734,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3802100",
+    "limitsConfigured": [
+      {
+        "token": "0x20c0000000000000000000000000000000000001",
+        "limitBaseUnits": "5000000",
+        "periodSeconds": null
+      },
+      {
+        "token": "0x20c0000000000000000000000000000000000000",
+        "limitBaseUnits": "1000000",
+        "periodSeconds": null,
+        "reason": "fee payment is itself limit-enforced; without this entry every key spend fails SpendingLimitExceeded"
+      }
+    ],
+    "expiryConfiguredSec": 1790456590,
+    "expiryOnChain": "1790456590",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingPrimaryBaseUnits": "5000000",
+      "periodEndPrimarySec": "0",
+      "remainingFeeTokenBaseUnits": "1000000"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time (periodEnd = authorize_time + period), confirmed by on-chain reads."
+  },
+  {
+    "recordedAtUtc": "2026-09-26T21:00:49.032Z",
+    "chainId": 42431,
+    "rpcUrl": "https://rpc.moderato.tempo.xyz",
+    "step": "authorize",
+    "mode": "confirmed testnet transaction",
+    "key": "D",
+    "purpose": "scope rejection tests, then revocation rejection test",
+    "merchantRootAddress": "0xe87288E1C77EF3acc77530993206069703fc9b70",
+    "accessKeyIdAddress": "0x461e17427546aacef4bec528e2f06d39ea11b059",
+    "keyType": "p256",
+    "authorizationTxHash": "0x78fcd08f8817bd4026ab766234abfb6b84cbf4dc05cb85665e7dd042d0be3809",
+    "explorer": "https://explore.testnet.tempo.xyz/tx/0x78fcd08f8817bd4026ab766234abfb6b84cbf4dc05cb85665e7dd042d0be3809",
+    "receiptStatus": "success",
+    "blockNumber": 37038736,
+    "feePayer": "0xe87288e1c77ef3acc77530993206069703fc9b70",
+    "feeToken": "0x20c0000000000000000000000000000000000000",
+    "gasUsed": "3802100",
+    "limitsConfigured": [
+      {
+        "token": "0x20c0000000000000000000000000000000000001",
+        "limitBaseUnits": "5000000",
+        "periodSeconds": null
+      },
+      {
+        "token": "0x20c0000000000000000000000000000000000000",
+        "limitBaseUnits": "1000000",
+        "periodSeconds": null,
+        "reason": "fee payment is itself limit-enforced; without this entry every key spend fails SpendingLimitExceeded"
+      }
+    ],
+    "expiryConfiguredSec": 1790542840,
+    "expiryOnChain": "1790542840",
+    "scopes": [
+      "{\"address\":\"0x20c0000000000000000000000000000000000001\",\"recipients\":[\"0xc197057273DccE7629ca33488f6F65bC105031F7\"],\"selector\":\"0xa9059cbb\"}"
+    ],
+    "onChainRead": {
+      "spendPolicy": "limited",
+      "isRevoked": false,
+      "remainingPrimaryBaseUnits": "5000000",
+      "periodEndPrimarySec": "0",
+      "remainingFeeTokenBaseUnits": "1000000"
+    },
+    "notes": "Authorization via TIP access-key flow (accountKeychain.authorizeKey), not an ERC-20 allowance. Period anchored to authorization time (periodEnd = authorize_time + period), confirmed by on-chain reads."
+  }
+]
