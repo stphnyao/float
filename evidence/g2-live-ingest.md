@@ -15,20 +15,20 @@ pnpm --filter @float/worker start -- --job=ingestReceipts --once
 
 Three invocations were captured:
 
-* `evidence/g2-ingest-run1.json` – first 5 k-block page, **0 events** (no receipts in that early window)
-* `evidence/g2-ingest-run2.json` – next page, **10 events** ingested
-* `evidence/g2-ingest-run3.json` – replay on same page, **0 new events** (idempotent)
+- `evidence/g2-ingest-run1.json` – first 5 k-block page, **0 events** (no receipts in that early window)
+- `evidence/g2-ingest-run2.json` – next page, **10 events** ingested
+- `evidence/g2-ingest-run3.json` – replay on same page, **0 new events** (idempotent)
 
 Summary:
 
-| Metric | Run 1 | Run 2 | Run 3 |
-| ------ | ----- | ----- | ----- |
-| observedEvents | 0 | 10 | 0 |
-| insertedEvents | 0 | 10 | 0 |
-| nextBlockNumber | 37,035,000 | 37,040,000 | 37,045,000 |
-| coverage.startSec | – | 1,790,455,968 | unchanged |
-| coverage.endSec | – | 1,790,457,006 | unchanged |
-| coverageTruncated | false | false |
+| Metric            | Run 1      | Run 2         | Run 3      |
+| ----------------- | ---------- | ------------- | ---------- |
+| observedEvents    | 0          | 10            | 0          |
+| insertedEvents    | 0          | 10            | 0          |
+| nextBlockNumber   | 37,035,000 | 37,040,000    | 37,045,000 |
+| coverage.startSec | –          | 1,790,455,968 | unchanged  |
+| coverage.endSec   | –          | 1,790,457,006 | unchanged  |
+| coverageTruncated | false      | false         |
 
 Evidence demonstrates:
 

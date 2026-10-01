@@ -277,7 +277,11 @@ export function createTempoAdapter(
      */
     async ingestTransfers(
       cursor: IngestionCursor,
-      filter: { tokenAddress: Address; recipients?: Address[]; senders?: Address[] },
+      filter: {
+        tokenAddress: Address;
+        recipients?: Address[];
+        senders?: Address[];
+      },
     ): Promise<{
       events: TransferEvent[];
       nextCursor: IngestionCursor;
@@ -344,7 +348,10 @@ export function createTempoAdapter(
       return {
         events,
         nextCursor: { chainId: config.chainId, nextBlockNumber: end + 1 },
-        scannedRange: { fromBlockNumber: cursor.nextBlockNumber, toBlockNumber: end },
+        scannedRange: {
+          fromBlockNumber: cursor.nextBlockNumber,
+          toBlockNumber: end,
+        },
       };
     },
 

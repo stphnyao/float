@@ -44,7 +44,11 @@ export interface TempoAdapter {
    */
   ingestTransfers(
     cursor: IngestionCursor,
-    filter: { tokenAddress: HexAddress; recipients?: HexAddress[]; senders?: HexAddress[] },
+    filter: {
+      tokenAddress: HexAddress;
+      recipients?: HexAddress[];
+      senders?: HexAddress[];
+    },
   ): Promise<{
     events: TransferEvent[];
     nextCursor: IngestionCursor;

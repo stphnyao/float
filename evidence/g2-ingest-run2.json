@@ -1,1 +1,8 @@
-{"job":"ingestReceipts","observedEvents":10,"insertedEvents":10,"nextBlockNumber":37040000,"coverage":{"startSec":1790455968,"endSec":1790457006},"coverageTruncated":false}
+{
+  "job": "ingestReceipts",
+  "observedEvents": 10,
+  "insertedEvents": 10,
+  "nextBlockNumber": 37040000,
+  "coverage": { "startSec": 1790455968, "endSec": 1790457006 },
+  "coverageTruncated": false
+}
