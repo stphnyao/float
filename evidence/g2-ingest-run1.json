@@ -1,6 +1,1 @@
-
-> @float/worker@0.0.0 start /workspace/apps/worker
-> tsx src/main.ts -- --job=ingestReceipts --once
-
-[float-worker] database=postgres://***@localhost:5432/float chainId=42431 evidence=observed_testnet
-[float-worker] job ingestReceipts: {"job":"ingestReceipts","observedEvents":0,"insertedEvents":0,"nextBlockNumber":37035000,"coverage":{"startSec":null,"endSec":null},"coverageTruncated":false}
+{"job":"ingestReceipts","observedEvents":0,"insertedEvents":0,"nextBlockNumber":37035000,"coverage":{"startSec":null,"endSec":null},"coverageTruncated":false}
