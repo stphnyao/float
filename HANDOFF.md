@@ -45,15 +45,15 @@ in-repo addition and the integrator-owned changes I deliberately avoided).
 
 ## Frozen policy-v1 summary (full detail in docs/policy-v1.md)
 
-| Dimension | Threshold | Direction |
-|---|---|---|
-| History completeness | 0 incomplete windows in the evaluated series; contiguous window starts required | lower is better |
-| Complete windows | >= 21 | higher is better |
-| Active periods (complete windows with net > 0) | >= 15 | higher is better |
-| Eligible volume (sum of max(0, net) over complete windows) | >= 300 whole units (scaled by verified decimals) | higher is better |
-| Payer concentration (top payer share of included volume) | <= 6000 bps | lower is better |
-| Volatility (max active day / mean active day, bps) | <= 25000 bps | lower is better |
-| Suspicious flows (suspected-circular volume) | 0 (any > 0 declines) | lower is better |
+| Dimension                                                  | Threshold                                                                       | Direction        |
+| ---------------------------------------------------------- | ------------------------------------------------------------------------------- | ---------------- |
+| History completeness                                       | 0 incomplete windows in the evaluated series; contiguous window starts required | lower is better  |
+| Complete windows                                           | >= 21                                                                           | higher is better |
+| Active periods (complete windows with net > 0)             | >= 15                                                                           | higher is better |
+| Eligible volume (sum of max(0, net) over complete windows) | >= 300 whole units (scaled by verified decimals)                                | higher is better |
+| Payer concentration (top payer share of included volume)   | <= 6000 bps                                                                     | lower is better  |
+| Volatility (max active day / mean active day, bps)         | <= 25000 bps                                                                    | lower is better  |
+| Suspicious flows (suspected-circular volume)               | 0 (any > 0 declines)                                                            | lower is better  |
 
 - Decisions: `insufficient_evidence` (evidence adequacy) > `declined`
   (quality failures) > `eligible`; all triggered `policy_*` reason codes are
@@ -112,6 +112,7 @@ in-repo addition and the integrator-owned changes I deliberately avoided).
 ---
 
 <<<<<<< HEAD
+
 # HANDOFF — Package B (Tempo integration), branch codex/float-chain
 
 Updated 2026-09-26. Integrator: see "Contracts-change requests" before touching
@@ -180,7 +181,8 @@ token identity per payment, add `feeToken` to the confirmed outcome.
   reconciliation loop around `adapter.reconcilePayment` (already typed).
 - apps/web: wallet UX (G4 rehearsal with the user's real wallet).
 - Package B did not touch apps/, packages/db, packages/policy, fixtures/.
-=======
+  \=======
+
 # HANDOFF — work package D (ledger/worker)
 
 Branch: `codex/float-ledger` (fast-forwarded from main `84e961c` before work
@@ -271,7 +273,7 @@ modified except this handoff section.
   _REVOKED / _EXPIRED / _NOT_VALID / COLLECTION_SCAN_INCOMPLETE /
   COLLECTION_WALLET_INSUFFICIENT_BALANCE; resumes when the blocker clears).
 - `src/main.ts` — operator-only CLI: `pnpm --filter @float/worker start --
-  [--once | --job=NAME | --interval-ms=N]`; manual triggers are CLI-only,
+[--once | --job=NAME | --interval-ms=N]`; manual triggers are CLI-only,
   never exposed via read-only paths. Live adapter comes from packages/chain
   and currently fails with B's explicit not-implemented guard.
 
@@ -311,19 +313,19 @@ modified except this handoff section.
 
 ## G3/G4 matrix (PLAN section 7) — scenario, test, result
 
-| Scenario | Test (tests/integration/test/) | Result |
-| --- | --- | --- |
-| Duplicate acceptance/funding | g3-duplicate-acceptance-funding.test.ts | PASS — replay returns same advance; one funding intent; one disbursement ledger row; duplicate reconcile = already-applied |
-| Duplicate jobs/concurrent triggers | g3-concurrent-triggers.test.ts | PASS — 2 concurrent runCollections / reserveForCollection / createBudgets = exactly one intent+reservation+repayment, one budget per period; over-collection request clamped to cap |
-| Crash around broadcast / lost RPC response | g3-crash-before-ack.test.ts | PASS — crash after txHash persistence: fresh run reconciles SAME tx once; rerun no-op; UnresolvedSubmitError keeps reservation, later reconcile applies once, no replacement broadcast |
-| Unresolved across period rollover | g3-unresolved-rollover.test.ts | PASS — reservation held across rollover; new period collection blocked (UNRESOLVED_BLOCK); health pauses with COLLECTION_UNRESOLVED_PAYMENT; reconcile settles + resumes; new period collects |
-| Zero receipts | g3-zero-receipts.test.ts | PASS — complete coverage + zero eligible = budgets frozen at 0 (exhausted), ZERO_ELIGIBLE_RECEIPTS skip, no intent/tx, no pause |
-| Incomplete history/scan gap | g3-pause-reasons.test.ts | PASS — no coverage = COLLECTION_SCAN_INCOMPLETE pause; backfill = resume |
-| Refund/self-transfer/Float disbursement | g3-classification-exclusions.test.ts (stub classifier) | PASS — net = sale minus refund adjustment; exclusions contribute 0; budget/repayment follow net |
-| Remaining debt below normal payment | g3-final-payment.test.ts | PASS — budget capped by outstanding (10 < 20); exact final partial; advance repaid; no post-payoff collection |
-| Insufficient balance/revoked/expired key | g3-pause-reasons.test.ts | PASS — COLLECTION_WALLET_INSUFFICIENT_BALANCE / _REVOKED / _EXPIRED with accurate codes; resume when cleared; no authorization = never funded |
-| Duplicate event/receipt ingestion | g3-classification-exclusions.test.ts | PASS — same range ingested 3x = 0 new rows after first; one frozen snapshot; one budget; one repayment |
-| Auth/offer replay or another merchant's ID | g3-offer-replay.test.ts + g3-duplicate-acceptance-funding.test.ts | PASS — expired/declined/wrong-identity/wrong-hash rejected with zero financial rows; replay returns same advance |
+| Scenario                                   | Test (tests/integration/test/)                                    | Result                                                                                                                                                                                        |
+| ------------------------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Duplicate acceptance/funding               | g3-duplicate-acceptance-funding.test.ts                           | PASS — replay returns same advance; one funding intent; one disbursement ledger row; duplicate reconcile = already-applied                                                                    |
+| Duplicate jobs/concurrent triggers         | g3-concurrent-triggers.test.ts                                    | PASS — 2 concurrent runCollections / reserveForCollection / createBudgets = exactly one intent+reservation+repayment, one budget per period; over-collection request clamped to cap           |
+| Crash around broadcast / lost RPC response | g3-crash-before-ack.test.ts                                       | PASS — crash after txHash persistence: fresh run reconciles SAME tx once; rerun no-op; UnresolvedSubmitError keeps reservation, later reconcile applies once, no replacement broadcast        |
+| Unresolved across period rollover          | g3-unresolved-rollover.test.ts                                    | PASS — reservation held across rollover; new period collection blocked (UNRESOLVED_BLOCK); health pauses with COLLECTION_UNRESOLVED_PAYMENT; reconcile settles + resumes; new period collects |
+| Zero receipts                              | g3-zero-receipts.test.ts                                          | PASS — complete coverage + zero eligible = budgets frozen at 0 (exhausted), ZERO_ELIGIBLE_RECEIPTS skip, no intent/tx, no pause                                                               |
+| Incomplete history/scan gap                | g3-pause-reasons.test.ts                                          | PASS — no coverage = COLLECTION_SCAN_INCOMPLETE pause; backfill = resume                                                                                                                      |
+| Refund/self-transfer/Float disbursement    | g3-classification-exclusions.test.ts (stub classifier)            | PASS — net = sale minus refund adjustment; exclusions contribute 0; budget/repayment follow net                                                                                               |
+| Remaining debt below normal payment        | g3-final-payment.test.ts                                          | PASS — budget capped by outstanding (10 < 20); exact final partial; advance repaid; no post-payoff collection                                                                                 |
+| Insufficient balance/revoked/expired key   | g3-pause-reasons.test.ts                                          | PASS — COLLECTION_WALLET_INSUFFICIENT_BALANCE / _REVOKED / _EXPIRED with accurate codes; resume when cleared; no authorization = never funded                                                 |
+| Duplicate event/receipt ingestion          | g3-classification-exclusions.test.ts                              | PASS — same range ingested 3x = 0 new rows after first; one frozen snapshot; one budget; one repayment                                                                                        |
+| Auth/offer replay or another merchant's ID | g3-offer-replay.test.ts + g3-duplicate-acceptance-funding.test.ts | PASS — expired/declined/wrong-identity/wrong-hash rejected with zero financial rows; replay returns same advance                                                                              |
 
 Plus `funding-activation.test.ts`: funding_pending to active ONLY on
 reconciled confirmed funding (submitted/unresolved never activate; anchor =
@@ -385,7 +387,8 @@ funding confirmation; protocol failure = funding_failed and the slot frees).
   `termsHash`, and the authorization evidence from the wallet flow.
 - Advance rows expose `pauseReasonCode`/`pausedAt` for accurate paused-state
   display; read-only paths must never trigger jobs (CLI is operator-only).
->>>>>>> codex/float-ledger
+
+> > > > > > > codex/float-ledger
 
 ---
 
@@ -479,7 +482,7 @@ modified except this handoff section.
   _REVOKED / _EXPIRED / _NOT_VALID / COLLECTION_SCAN_INCOMPLETE /
   COLLECTION_WALLET_INSUFFICIENT_BALANCE; resumes when the blocker clears).
 - `src/main.ts` — operator-only CLI: `pnpm --filter @float/worker start --
-  [--once | --job=NAME | --interval-ms=N]`; manual triggers are CLI-only,
+[--once | --job=NAME | --interval-ms=N]`; manual triggers are CLI-only,
   never exposed via read-only paths. Live adapter comes from packages/chain
   and currently fails with B's explicit not-implemented guard.
 
@@ -519,19 +522,19 @@ modified except this handoff section.
 
 ## G3/G4 matrix (PLAN section 7) — scenario, test, result
 
-| Scenario | Test (tests/integration/test/) | Result |
-| --- | --- | --- |
-| Duplicate acceptance/funding | g3-duplicate-acceptance-funding.test.ts | PASS — replay returns same advance; one funding intent; one disbursement ledger row; duplicate reconcile = already-applied |
-| Duplicate jobs/concurrent triggers | g3-concurrent-triggers.test.ts | PASS — 2 concurrent runCollections / reserveForCollection / createBudgets = exactly one intent+reservation+repayment, one budget per period; over-collection request clamped to cap |
-| Crash around broadcast / lost RPC response | g3-crash-before-ack.test.ts | PASS — crash after txHash persistence: fresh run reconciles SAME tx once; rerun no-op; UnresolvedSubmitError keeps reservation, later reconcile applies once, no replacement broadcast |
-| Unresolved across period rollover | g3-unresolved-rollover.test.ts | PASS — reservation held across rollover; new period collection blocked (UNRESOLVED_BLOCK); health pauses with COLLECTION_UNRESOLVED_PAYMENT; reconcile settles + resumes; new period collects |
-| Zero receipts | g3-zero-receipts.test.ts | PASS — complete coverage + zero eligible = budgets frozen at 0 (exhausted), ZERO_ELIGIBLE_RECEIPTS skip, no intent/tx, no pause |
-| Incomplete history/scan gap | g3-pause-reasons.test.ts | PASS — no coverage = COLLECTION_SCAN_INCOMPLETE pause; backfill = resume |
-| Refund/self-transfer/Float disbursement | g3-classification-exclusions.test.ts (stub classifier) | PASS — net = sale minus refund adjustment; exclusions contribute 0; budget/repayment follow net |
-| Remaining debt below normal payment | g3-final-payment.test.ts | PASS — budget capped by outstanding (10 < 20); exact final partial; advance repaid; no post-payoff collection |
-| Insufficient balance/revoked/expired key | g3-pause-reasons.test.ts | PASS — COLLECTION_WALLET_INSUFFICIENT_BALANCE / _REVOKED / _EXPIRED with accurate codes; resume when cleared; no authorization = never funded |
-| Duplicate event/receipt ingestion | g3-classification-exclusions.test.ts | PASS — same range ingested 3x = 0 new rows after first; one frozen snapshot; one budget; one repayment |
-| Auth/offer replay or another merchant's ID | g3-offer-replay.test.ts + g3-duplicate-acceptance-funding.test.ts | PASS — expired/declined/wrong-identity/wrong-hash rejected with zero financial rows; replay returns same advance |
+| Scenario                                   | Test (tests/integration/test/)                                    | Result                                                                                                                                                                                        |
+| ------------------------------------------ | ----------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Duplicate acceptance/funding               | g3-duplicate-acceptance-funding.test.ts                           | PASS — replay returns same advance; one funding intent; one disbursement ledger row; duplicate reconcile = already-applied                                                                    |
+| Duplicate jobs/concurrent triggers         | g3-concurrent-triggers.test.ts                                    | PASS — 2 concurrent runCollections / reserveForCollection / createBudgets = exactly one intent+reservation+repayment, one budget per period; over-collection request clamped to cap           |
+| Crash around broadcast / lost RPC response | g3-crash-before-ack.test.ts                                       | PASS — crash after txHash persistence: fresh run reconciles SAME tx once; rerun no-op; UnresolvedSubmitError keeps reservation, later reconcile applies once, no replacement broadcast        |
+| Unresolved across period rollover          | g3-unresolved-rollover.test.ts                                    | PASS — reservation held across rollover; new period collection blocked (UNRESOLVED_BLOCK); health pauses with COLLECTION_UNRESOLVED_PAYMENT; reconcile settles + resumes; new period collects |
+| Zero receipts                              | g3-zero-receipts.test.ts                                          | PASS — complete coverage + zero eligible = budgets frozen at 0 (exhausted), ZERO_ELIGIBLE_RECEIPTS skip, no intent/tx, no pause                                                               |
+| Incomplete history/scan gap                | g3-pause-reasons.test.ts                                          | PASS — no coverage = COLLECTION_SCAN_INCOMPLETE pause; backfill = resume                                                                                                                      |
+| Refund/self-transfer/Float disbursement    | g3-classification-exclusions.test.ts (stub classifier)            | PASS — net = sale minus refund adjustment; exclusions contribute 0; budget/repayment follow net                                                                                               |
+| Remaining debt below normal payment        | g3-final-payment.test.ts                                          | PASS — budget capped by outstanding (10 < 20); exact final partial; advance repaid; no post-payoff collection                                                                                 |
+| Insufficient balance/revoked/expired key   | g3-pause-reasons.test.ts                                          | PASS — COLLECTION_WALLET_INSUFFICIENT_BALANCE / _REVOKED / _EXPIRED with accurate codes; resume when cleared; no authorization = never funded                                                 |
+| Duplicate event/receipt ingestion          | g3-classification-exclusions.test.ts                              | PASS — same range ingested 3x = 0 new rows after first; one frozen snapshot; one budget; one repayment                                                                                        |
+| Auth/offer replay or another merchant's ID | g3-offer-replay.test.ts + g3-duplicate-acceptance-funding.test.ts | PASS — expired/declined/wrong-identity/wrong-hash rejected with zero financial rows; replay returns same advance                                                                              |
 
 Plus `funding-activation.test.ts`: funding_pending to active ONLY on
 reconciled confirmed funding (submitted/unresolved never activate; anchor =
