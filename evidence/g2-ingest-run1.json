@@ -1,0 +1,8 @@
+{
+  "job": "ingestReceipts",
+  "observedEvents": 0,
+  "insertedEvents": 0,
+  "nextBlockNumber": 37035000,
+  "coverage": { "startSec": null, "endSec": null },
+  "coverageTruncated": false
+}

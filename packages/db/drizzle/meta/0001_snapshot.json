@@ -182,12 +182,8 @@
           "name": "advances_merchant_id_merchants_id_fk",
           "tableFrom": "advances",
           "tableTo": "merchants",
-          "columnsFrom": [
-            "merchant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["merchant_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -195,12 +191,8 @@
           "name": "advances_offer_id_offers_id_fk",
           "tableFrom": "advances",
           "tableTo": "offers",
-          "columnsFrom": [
-            "offer_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["offer_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -261,9 +253,7 @@
         "auth_challenges_nonce_unique": {
           "name": "auth_challenges_nonce_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "nonce"
-          ]
+          "columns": ["nonce"]
         }
       },
       "policies": {},
@@ -398,12 +388,8 @@
           "name": "authorizations_merchant_id_merchants_id_fk",
           "tableFrom": "authorizations",
           "tableTo": "merchants",
-          "columnsFrom": [
-            "merchant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["merchant_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -411,12 +397,8 @@
           "name": "authorizations_advance_id_advances_id_fk",
           "tableFrom": "authorizations",
           "tableTo": "advances",
-          "columnsFrom": [
-            "advance_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["advance_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -534,12 +516,8 @@
           "name": "collection_budgets_advance_id_advances_id_fk",
           "tableFrom": "collection_budgets",
           "tableTo": "advances",
-          "columnsFrom": [
-            "advance_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["advance_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -547,12 +525,8 @@
           "name": "collection_budgets_snapshot_id_revenue_snapshots_id_fk",
           "tableFrom": "collection_budgets",
           "tableTo": "revenue_snapshots",
-          "columnsFrom": [
-            "snapshot_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["snapshot_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -625,12 +599,8 @@
           "name": "collection_reservations_advance_id_advances_id_fk",
           "tableFrom": "collection_reservations",
           "tableTo": "advances",
-          "columnsFrom": [
-            "advance_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["advance_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -638,12 +608,8 @@
           "name": "collection_reservations_budget_id_collection_budgets_id_fk",
           "tableFrom": "collection_reservations",
           "tableTo": "collection_budgets",
-          "columnsFrom": [
-            "budget_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["budget_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -651,12 +617,8 @@
           "name": "collection_reservations_intent_id_payment_intents_id_fk",
           "tableFrom": "collection_reservations",
           "tableTo": "payment_intents",
-          "columnsFrom": [
-            "intent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["intent_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -836,12 +798,8 @@
           "name": "ledger_entries_advance_id_advances_id_fk",
           "tableFrom": "ledger_entries",
           "tableTo": "advances",
-          "columnsFrom": [
-            "advance_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["advance_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -849,12 +807,8 @@
           "name": "ledger_entries_intent_id_payment_intents_id_fk",
           "tableFrom": "ledger_entries",
           "tableTo": "payment_intents",
-          "columnsFrom": [
-            "intent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["intent_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -897,9 +851,7 @@
         "merchants_wallet_address_unique": {
           "name": "merchants_wallet_address_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "wallet_address"
-          ]
+          "columns": ["wallet_address"]
         }
       },
       "policies": {},
@@ -991,12 +943,8 @@
           "name": "offers_merchant_id_merchants_id_fk",
           "tableFrom": "offers",
           "tableTo": "merchants",
-          "columnsFrom": [
-            "merchant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["merchant_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1056,12 +1004,8 @@
           "name": "payment_attempts_intent_id_payment_intents_id_fk",
           "tableFrom": "payment_attempts",
           "tableTo": "payment_intents",
-          "columnsFrom": [
-            "intent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["intent_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1174,12 +1118,8 @@
           "name": "payment_intents_advance_id_advances_id_fk",
           "tableFrom": "payment_intents",
           "tableTo": "advances",
-          "columnsFrom": [
-            "advance_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["advance_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -1187,12 +1127,8 @@
           "name": "payment_intents_budget_id_collection_budgets_id_fk",
           "tableFrom": "payment_intents",
           "tableTo": "collection_budgets",
-          "columnsFrom": [
-            "budget_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["budget_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1202,9 +1138,7 @@
         "payment_intents_idempotency_key_unique": {
           "name": "payment_intents_idempotency_key_unique",
           "nullsNotDistinct": false,
-          "columns": [
-            "idempotency_key"
-          ]
+          "columns": ["idempotency_key"]
         }
       },
       "policies": {},
@@ -1300,12 +1234,8 @@
           "name": "receipt_classifications_event_id_receipt_events_id_fk",
           "tableFrom": "receipt_classifications",
           "tableTo": "receipt_events",
-          "columnsFrom": [
-            "event_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["event_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1580,12 +1510,8 @@
           "name": "revenue_snapshots_merchant_id_merchants_id_fk",
           "tableFrom": "revenue_snapshots",
           "tableTo": "merchants",
-          "columnsFrom": [
-            "merchant_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["merchant_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
